@@ -1,17 +1,33 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import HomePage from "./Components/Home/HomePage";
-import Header from "./Components/Navbar/Header";
-import AboutSection from "./Components/About/AboutUs";
+import InitiativesPage from "./Components/Initiatives/InitiativesPage";
+import GalleryPage from "./Components/Gallery/GalleryPage";
+import Layout from "./Components/Layout/Layout";
+import ScrollToTop from "./Components/ScrollToTop";
 
 function App() {
   const [language, setLanguage] = useState("en");
+  const aboutRef = useRef(null);
+  const scrollToAbout = () => {
+    if (aboutRef.current) {
+      aboutRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <div className="App">
-      <Header language={language} setLanguage={setLanguage} />
-      <HomePage language={language} setLanguage={setLanguage} />
-      <AboutSection language={language} />
+      <Router>
+        <ScrollToTop />
+        <Layout language={language} setLanguage={setLanguage} onAboutClick={scrollToAbout}>
+          <Routes>
+            <Route path="/" element={<HomePage language={language} setLanguage={setLanguage} />} />
+            <Route path="/gallery" element={<GalleryPage language={language} setLanguage={setLanguage} />} />
+            <Route path="/initiatives" element={<InitiativesPage language={language} setLanguage={setLanguage} />} />
+          </Routes>
+        </Layout>
+      </Router>
     </div>
   );
 }
