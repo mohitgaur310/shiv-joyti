@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   AppBar,
   Toolbar,
@@ -15,8 +15,10 @@ import {
   useTheme,
   useMediaQuery,
 } from "@mui/material";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
+import { ScrollContext } from "../Layout/Layout";
 
 const navLinks = {
   en: ["Home", "About Us", "Initiatives", "Gallery", "Contact"],
@@ -27,6 +29,9 @@ export default function Header({ language, setLanguage }) {
   const [open, setOpen] = useState(false);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { scrollToTop, scrollToAbout } = useContext(ScrollContext);
   let logoStyles = {
     fontWeight: "bold",
     textDecoration: "none",
@@ -35,6 +40,7 @@ export default function Header({ language, setLanguage }) {
     WebkitTextFillColor: "transparent",
   };
   const toggleDrawer = (open) => () => setOpen(open);
+  
 
   const buttonStyle = {
     color: "#666",
@@ -45,47 +51,109 @@ export default function Header({ language, setLanguage }) {
     },
   };
 
+  // Navigation paths for other links
+  const navPaths = ["/", null, "/initiatives", "/gallery", "/contact"];
+
+  // Ensure navLinks[language] is always defined
+  const navArray = navLinks[language] || navLinks.en;
+
+  // Handler for Home click
+  const handleHomeClick = () => {
+    if (location.pathname !== "/") {
+      navigate("/");
+    } else if (typeof scrollToTop === "function") {
+      scrollToTop();
+    }
+  };
+
+  // Handler for About Us click
+  const handleAboutClick = () => {
+    if (location.pathname !== "/") {
+      sessionStorage.setItem("scrollToAbout", "1");
+      navigate("/");
+    } else if (typeof scrollToAbout === "function") {
+      scrollToAbout();
+    }
+  };
+
   return (
     <>
       <AppBar position="fixed" color="inherit" elevation={2}>
         <Toolbar sx={{ justifyContent: "space-between" }}>
           <Typography
             variant="h6"
-            component="a"
-            href="#"
+            component={Link}
+            to="/"
             sx={{
               ...logoStyles,
+              cursor: 'pointer',
             }}
+            onClick={handleHomeClick}
           >
             SHIV JOYTI
           </Typography>
 
           {!isMobile && (
             <Box sx={{ display: "flex", alignItems: "center", gap: 3 }}>
-              {navLinks[language].map((link, index) => (
-                <Button
-                  key={link}
-                  href={`#${navLinks.en[index]
-                    .toLowerCase()
-                    .replace(/\s+/g, "-")}`}
-                  sx={{
-                    px: 2,
-                    fontSize: "16px",
-                    color: "#666",
-                    fontWeight: "bold",
-                    bgcolor: "white",
-                    "&:hover": {
-                      color: " #72be44",
-                      // color: "#fff",
-                    },
-                  }}
-                >
-                  {link}
-                </Button>
-              ))}
+              {navArray.map((label, index) =>
+                index === 0 ? (
+                  <Button
+                    key={label}
+                    onClick={handleHomeClick}
+                    sx={{
+                      px: 2,
+                      fontSize: "16px",
+                      color: "#666",
+                      fontWeight: "bold",
+                      bgcolor: "white",
+                      "&:hover": {
+                        color: " #72be44",
+                      },
+                    }}
+                  >
+                    {label}
+                  </Button>
+                ) : index === 1 ? (
+                  <Button
+                    key={label}
+                    onClick={handleAboutClick}
+                    sx={{
+                      px: 2,
+                      fontSize: "16px",
+                      color: "#666",
+                      fontWeight: "bold",
+                      bgcolor: "white",
+                      "&:hover": {
+                        color: " #72be44",
+                      },
+                    }}
+                  >
+                    {label}
+                  </Button>
+                ) : (
+                  <Button
+                    key={label}
+                    component={Link}
+                    to={navPaths[index]}
+                    sx={{
+                      px: 2,
+                      fontSize: "16px",
+                      color: "#666",
+                      fontWeight: "bold",
+                      bgcolor: "white",
+                      "&:hover": {
+                        color: " #72be44",
+                      },
+                    }}
+                  >
+                    {label}
+                  </Button>
+                )
+              )}
               <Button
                 variant="contained"
-                href="#donate"
+                component={Link}
+                to="/donate"
                 sx={{
                   backgroundColor: "#72be44",
                   color: "#fff",
@@ -129,18 +197,45 @@ export default function Header({ language, setLanguage }) {
           </IconButton>
         </Box>
         <List>
-          {navLinks[language].map((text, index) => (
-            <ListItem
-              button
-              key={text}
-              component="a"
-              href={`#${navLinks.en[index].toLowerCase().replace(/\s+/g, "-")}`}
-              sx={buttonStyle}
-            >
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-          <ListItem button component="a" href="#donate">
+          {navArray.map((label, index) =>
+            index === 0 ? (
+              <ListItem
+                button
+                key={label}
+                onClick={() => {
+                  toggleDrawer(false)();
+                  handleHomeClick();
+                }}
+                sx={buttonStyle}
+              >
+                <ListItemText primary={label} />
+              </ListItem>
+            ) : index === 1 ? (
+              <ListItem
+                button
+                key={label}
+                onClick={() => {
+                  toggleDrawer(false)();
+                  handleAboutClick();
+                }}
+                sx={buttonStyle}
+              >
+                <ListItemText primary={label} />
+              </ListItem>
+            ) : (
+              <ListItem
+                button
+                key={label}
+                component={Link}
+                to={navPaths[index]}
+                sx={buttonStyle}
+                onClick={toggleDrawer(false)}
+              >
+                <ListItemText primary={label} />
+              </ListItem>
+            )
+          )}
+          <ListItem button component={Link} to="/donate" onClick={toggleDrawer(false)}>
             <Button
               variant="contained"
               fullWidth
@@ -159,7 +254,7 @@ export default function Header({ language, setLanguage }) {
           </ListItem>
         </List>
       </Drawer>
-      <Toolbar />
+      {/* <Toolbar /> */}
     </>
   );
 }

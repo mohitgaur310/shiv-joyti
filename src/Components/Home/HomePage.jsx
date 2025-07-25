@@ -1,9 +1,10 @@
-import React, { useState } from "react";
-import Header from "../Navbar/Header";
+import React, { useRef, useEffect, useContext } from "react";
+import AboutSection from "../About/AboutUs";
 import { Typography, Box, Button } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
+import { ScrollContext } from "../Layout/Layout";
 
 const content = {
   en: {
@@ -25,14 +26,35 @@ const images = [
   "/assests/top-view-origami-chain-people-with-globe.jpg",
 ];
 
-export default function HomePage() {
-  const [language, setLanguage] = useState("en");
+export default function HomePage({ language }) {
+  const aboutRef = useRef(null);
+  const { registerScrollToTop, registerScrollToAbout } = useContext(ScrollContext);
+
+  const scrollToAbout = () => {
+    if (aboutRef.current) {
+      aboutRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    if (registerScrollToAbout) registerScrollToAbout(scrollToAbout);
+    if (registerScrollToTop) registerScrollToTop(scrollToTop);
+  }, [registerScrollToAbout, registerScrollToTop]);
+
+  useEffect(() => {
+    if (sessionStorage.getItem("scrollToAbout")) {
+      scrollToAbout();
+      sessionStorage.removeItem("scrollToAbout");
+    }
+  }, []);
 
   return (
     <>
-      <Header language={language} setLanguage={setLanguage} />
-
-      <Box sx={{ mt: -8 }}>
+      <Box >
         <Swiper
           modules={[Autoplay]}
           autoplay={{ delay: 3000, disableOnInteraction: false }}
@@ -44,7 +66,6 @@ export default function HomePage() {
                 sx={{
                   position: "relative",
                   height: { xs: 400, sm: 600 },
-                  // borderRadius: 2,
                   overflow: "hidden",
                 }}
               >
@@ -66,7 +87,6 @@ export default function HomePage() {
                     flexDirection: "column",
                     justifyContent: "center",
                     alignItems: "center",
-                    // color: "#666",
                     color: "white",
                     px: 3,
                     textAlign: "center",
@@ -100,6 +120,9 @@ export default function HomePage() {
           ))}
         </Swiper>
       </Box>
+      <div ref={aboutRef}>
+        <AboutSection language={language} />
+      </div>
     </>
   );
 }
