@@ -4,6 +4,8 @@ import "./App.css";
 import HomePage from "./Components/Home/HomePage";
 import InitiativesPage from "./Components/Initiatives/InitiativesPage";
 import GalleryPage from "./Components/Gallery/GalleryPage";
+import ContactPage from "./Components/Contact/ContactPage";
+import DonatePage from "./Components/Donate/DonatePage";
 import Layout from "./Components/Layout/Layout";
 import ScrollToTop from "./Components/ScrollToTop";
 
@@ -25,6 +27,8 @@ function App() {
             <Route path="/" element={<HomePage language={language} setLanguage={setLanguage} />} />
             <Route path="/gallery" element={<GalleryPage language={language} setLanguage={setLanguage} />} />
             <Route path="/initiatives" element={<InitiativesPage language={language} setLanguage={setLanguage} />} />
+            <Route path="/contact" element={<ContactPage language={language} setLanguage={setLanguage} />} />
+            <Route path="/donate" element={<DonatePage language={language} setLanguage={setLanguage} />} />
           </Routes>
         </Layout>
       </Router>

@@ -5,6 +5,17 @@ import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import CloseIcon from '@mui/icons-material/Close';
 
+const content = {
+  en: {
+    title: "Gallery",
+    subtitle: "Celebrating moments, memories, and milestones together.",
+  },
+  hi: {
+    title: "गैलरी",
+    subtitle: "पलों, यादों और उपलब्धियों का जश्न मनाते हुए।",
+  },
+};
+
 const images = [
   {
     url: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80",
@@ -50,7 +61,7 @@ const images = [
 
 const heights = [240, 320, 200, 280, 260, 220, 300, 250];
 
-export default function GalleryPage({ language , setLanguage }) {
+export default function GalleryPage({ language, setLanguage }) {
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState(null);
   console.log("GalleryPage", language);
@@ -64,16 +75,25 @@ export default function GalleryPage({ language , setLanguage }) {
   const handleNext = () => setSelected((selected + 1) % images.length);
 
   return (
-    <Layout language={language} setLanguage={setLanguage}>
-      <Box sx={{ background: '#f7f7f7', py: { xs: 6, md: 10 } }}>
+    <Box sx={{ minHeight: "100vh", pt: 8, pb: 6, position: "relative" }}>
+      {/* Green Hero Section */}
+      <Box sx={{
+        background: 'linear-gradient(135deg, #72be44 0%, #7dc657 50%, #5aa237 100%)',
+        py: 8,
+        mb: { xs: 4, md: 6 },
+        textAlign: 'center',
+      }}>
+        <Typography variant="h3" sx={{ color: 'white', fontWeight: 'bold', mb: 1, letterSpacing: 1 }}>
+          {content[language].title}
+        </Typography>
+        <Typography variant="h6" sx={{ color: 'white', opacity: 0.92, fontStyle: 'italic', maxWidth: 600, mx: 'auto' }}>
+          {content[language].subtitle}
+        </Typography>
+      </Box>
+      {/* Existing Content */}
+      <Box sx={{ py: { xs: 4, md: 8 } }}>
         <Box sx={{ maxWidth: '1200px', mx: 'auto', px: 3 }}>
-          <Typography variant="h3" sx={{ fontWeight: 'bold', color: '#222', mb: 2, textAlign: 'center', letterSpacing: 1 }}>
-            Gallery
-          </Typography>
-          <Typography variant="h6" sx={{ color: '#72be44', mb: 6, textAlign: 'center', fontStyle: 'italic' }}>
-            Celebrating moments, memories, and milestones together.
-          </Typography>
-          {/* Masonry grid using flexbox */}
+         
           <Box sx={{
             display: 'flex',
             flexWrap: 'wrap',
@@ -156,6 +176,6 @@ export default function GalleryPage({ language , setLanguage }) {
           </Box>
         </Modal>
       </Box>
-    </Layout>
+    </Box>
   );
 } 
