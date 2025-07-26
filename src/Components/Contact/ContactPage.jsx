@@ -20,8 +20,7 @@ import {
   Twitter,
   Star,
   EmojiEmotions,
-  Celebration,
-  AutoAwesome,
+  Celebration
 } from "@mui/icons-material";
 import { motion } from "framer-motion";
 
@@ -54,6 +53,10 @@ const content = {
         { icon: EmojiEmotions, title: "Friendly Team", desc: "Meet our amazing volunteers" },
         { icon: Celebration, title: "Quick Response", desc: "Get replies within hours" },
       ]
+    },
+    sections: {
+      inquiry: "ONLINE INQUIRY",
+      details: "CONTACT DETAILS"
     }
   },
   hi: {
@@ -84,6 +87,10 @@ const content = {
         { icon: EmojiEmotions, title: "दोस्ताना टीम", desc: "हमारे अद्भुत स्वयंसेवकों से मिलें" },
         { icon: Celebration, title: "त्वरित प्रतिक्रिया", desc: "घंटों में जवाब पाएं" },
       ]
+    },
+    sections: {
+      inquiry: "ऑनलाइन पूछताछ",
+      details: "संपर्क विवरण"
     }
   },
 };
@@ -259,7 +266,7 @@ export default function ContactPage({ language }) {
             {/* Contact Form */}
             <Grid item xs={12} md={6}>
               <Typography variant="subtitle1" sx={{ fontWeight: 600, letterSpacing: 2, mb: 2, color: "#5aa237" }}>
-                ONLINE INQUIRY
+                {content[language].sections.inquiry}
               </Typography>
               <Box component="form" onSubmit={handleSubmit}>
                 <TextField
@@ -345,7 +352,7 @@ export default function ContactPage({ language }) {
             {/* Contact Details */}
             <Grid item xs={12} md={6}>
               <Typography variant="subtitle1" sx={{ fontWeight: 600, letterSpacing: 2, mb: 2, color: "#5aa237" }}>
-                CONTACT DETAILS
+                {content[language].sections.details}
               </Typography>
               <Box sx={{ mb: 2 }}>
                 <Typography variant="body2" sx={{ color: "#333", mb: 1 }}>
