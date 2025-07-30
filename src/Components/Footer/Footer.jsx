@@ -56,8 +56,8 @@ const footerLinks = {
 const footerText = {
   en: {
     foundation: "SHIV JYOTI FOUNDATION",
-    address: "B-10, 2nd Floor, Sector-1, Noida, Uttar Pradesh, India",
-    contact: "Contact Us: Tel: +91-11-43123700 | E-mail: info@shivjyotifoundation.org",
+    address: "Lohiya Nagar Begusarai Bihar, BEGUSARAI (Bihar) 851218",
+    contact: "Contact Us: Tel: +91 8409133789 | E-mail: shivjyoti763@gmail.com",
     subscribe: "Subscribe to Our Newsletter",
     name: "Name",
     email: "Enter Your Email",
@@ -65,8 +65,8 @@ const footerText = {
   },
   hi: {
     foundation: "शिव ज्योति फाउंडेशन",
-    address: "बी-10, दूसरी मंजिल, सेक्टर-1, नोएडा, उत्तर प्रदेश, भारत",
-    contact: "संपर्क करें: टेल: +91-11-43123700 | ईमेल: info@shivjyotifoundation.org",
+    address: "लोहीया नगर बेगूसराय बिहार, बेगूसराय (बिहार) - 851218",
+    contact: "संपर्क करें: टेल: +91 8409133789 | ईमेल: shivjyoti763@gmail.com",
     subscribe: "हमारे न्यूज़लेटर के लिए सब्सक्राइब करें",
     name: "नाम",
     email: "अपना ईमेल दर्ज करें",

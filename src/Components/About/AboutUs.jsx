@@ -13,20 +13,22 @@ const content = {
     heading: "The Minds Behind the Mission",
     cofounders: [
       {
-        name: "Founder Name 1",
-        title: "Executive Director",
+        name: "CHANDRA KUMAR SINGH",
+        title: "President",
         img: "/assests/pexels-ahmed-akacha-3313934-10629468.jpg",
-        bio: "With over 15 years of experience in social welfare, our lead founder provides the vision and strategic direction that drives our foundation forward."
+        bio: "Working since 14-08-2008. Dedicated to empowering women, ending child marriage, and ensuring food security for all."
       },
       {
-        name: "Founder Name 2",
-        title: "Director of Operations",
+        name: "MANAS BHARDWAJ",
+        title: "Secretary",
         img: "/assests/top-view-origami-chain-people-with-globe.jpg",
+        bio: "Working since 01-07-2019. Committed to community welfare and social development initiatives."
       },
       {
-        name: "Founder Name 3",
-        title: "Community Outreach Lead",
+        name: "BHARTI KUMARI",
+        title: "Treasurer",
         img: "/assests/pexels-ahmed-akacha-3313934-10629468.jpg",
+        bio: "Working since 02-02-2024. Focused on financial management and organizational growth."
       },
     ],
     aboutText: `Shiv Jyoti Foundation was born out of a dream — a dream to uplift the most vulnerable sections of our society. Our founders have dedicated their lives to service and community welfare. We work tirelessly to empower women, end child marriage, and ensure food security for all. Through our various initiatives, we strive to create a world where every woman has equal opportunities, every child a safe future, and every family access to food and dignity. Our team believes in the power of community and the importance of education, health, and social justice. Together, we are building a brighter, more inclusive future for everyone.`,
@@ -35,20 +37,22 @@ const content = {
     heading: "मिशन के पीछे का दिमाग",
     cofounders: [
       {
-        name: "संस्थापक का नाम 1",
-        title: "कार्यकारी निदेशक",
+        name: "चंद्र कुमार सिंह",
+        title: "अध्यक्ष",
         img: "/assests/pexels-ahmed-akacha-3313934-10629468.jpg",
-        bio: "समाज कल्याण में 15 से अधिक वर्षों के अनुभव के साथ, हमारे प्रमुख संस्थापक हमारी नींव को आगे बढ़ाने वाली दृष्टि और रणनीतिक दिशा प्रदान करते हैं।"
+        bio: "14-08-2008 से कार्यरत। महिलाओं को सशक्त बनाने, बाल विवाह को समाप्त करने और सभी के लिए खाद्य सुरक्षा सुनिश्चित करने के लिए समर्पित।"
       },
       {
-        name: "संस्थापक का नाम 2",
-        title: "संचालन निदेशक",
+        name: "मानस भारद्वाज",
+        title: "सचिव",
         img: "/assests/top-view-origami-chain-people-with-globe.jpg",
+        bio: "01-07-2019 से कार्यरत। समुदाय कल्याण और सामाजिक विकास पहलों के लिए प्रतिबद्ध।"
       },
       {
-        name: "संस्थापक का नाम 3",
-        title: "सामुदायिक आउटरीच लीड",
+        name: "भारती कुमारी",
+        title: "कोषाध्यक्ष",
         img: "/assests/pexels-ahmed-akacha-3313934-10629468.jpg",
+        bio: "02-02-2024 से कार्यरत। वित्तीय प्रबंधन और संगठनात्मक विकास पर केंद्रित।"
       },
     ],
     aboutText: `शिव ज्योति संस्था की स्थापना एक सपने से हुई थी – समाज के सबसे कमजोर वर्ग की सहायता करना। हमारे संस्थापकों ने अपने जीवन को सेवा और समाज कल्याण को समर्पित किया है। हम महिलाओं को सशक्त बनाने, बाल विवाह को समाप्त करने और सभी के लिए खाद्य सुरक्षा सुनिश्चित करने के लिए निरंतर प्रयासरत हैं। अपनी विभिन्न पहलों के माध्यम से, हम एक ऐसी दुनिया बनाने का प्रयास करते हैं जहाँ हर महिला को समान अवसर मिले, हर बच्चे को सुरक्षित भविष्य मिले और हर परिवार को भोजन और गरिमा मिले। हमारी टीम समुदाय की शक्ति और शिक्षा, स्वास्थ्य और सामाजिक न्याय के महत्व में विश्वास करती है। हम सब मिलकर सभी के लिए एक उज्जवल और समावेशी भविष्य का निर्माण कर रहे हैं।`,
