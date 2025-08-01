@@ -38,9 +38,9 @@ const content = {
     },
     contact: {
       title: "Contact Information",
-      address: "123 Community Street, New Delhi, India",
-      phone: "+91 98765 43210",
-      email: "info@shivjoyti.org",
+      address: "Lohiya Nagar Begusarai Bihar, BEGUSARAI (Bihar) 851218",
+      phone: "+91 8409133789",
+      email: "shivjyoti763@gmail.com",
     },
     social: {
       title: "Follow Us",
@@ -72,7 +72,7 @@ const content = {
     },
     contact: {
       title: "संपर्क जानकारी",
-      address: "123 कम्युनिटी स्ट्रीट, नई दिल्ली, भारत",
+      address: "लोहीया नगर बेगूसराय बिहार, बेगूसराय (बिहार) - 851218",
       phone: "+91 98765 43210",
       email: "info@shivjoyti.org",
     },
@@ -183,7 +183,7 @@ export default function ContactPage({ language }) {
         sx={{
           background: "linear-gradient(135deg, #72be44 0%, #7dc657 50%, #5aa237 100%)",
           py: 8,
-          mb: { xs: 4, md: 6 },
+          
           position: "relative",
           overflow: "hidden",
         }}
@@ -354,17 +354,18 @@ export default function ContactPage({ language }) {
               <Typography variant="subtitle1" sx={{ fontWeight: 600, letterSpacing: 2, mb: 2, color: "#5aa237" }}>
                 {content[language].sections.details}
               </Typography>
-              <Box sx={{ mb: 2 }}>
-                <Typography variant="body2" sx={{ color: "#333", mb: 1 }}>
-                  <span style={{ fontWeight: 600 }}>Email:</span> info@shivjoyti.org
-                </Typography>
-                <Typography variant="body2" sx={{ color: "#333", mb: 1 }}>
-                  <span style={{ fontWeight: 600 }}>Phone:</span> +91 98765 43210
-                </Typography>
-                <Typography variant="body2" sx={{ color: "#333", mb: 2 }}>
-                  <span style={{ fontWeight: 600 }}>Address:</span><br />123 Community Street, New Delhi, India
-                </Typography>
-              </Box>
+                             <Box sx={{ mb: 2 }}>
+                 <Typography variant="body2" sx={{ color: "#333", mb: 1 }}>
+                   <span style={{ fontWeight: 600 }}>Email:</span> {content[language].contact.email}
+                 </Typography>
+                 <Typography variant="body2" sx={{ color: "#333", mb: 1 }}>
+                   <span style={{ fontWeight: 600 }}>Phone:</span> {content[language].contact.phone}
+                 </Typography>
+                 <Typography variant="body2" sx={{ color: "#333", mb: 2 }}>
+                   <span style={{ fontWeight: 600 }}>Address:</span><br />
+                   {content[language].contact.address}
+                 </Typography>
+               </Box>
               <Divider sx={{ my: 2 }} />
               <Box>
                 <Typography variant="subtitle2" sx={{ fontWeight: 600, color: "#5aa237", mb: 1 }}>
