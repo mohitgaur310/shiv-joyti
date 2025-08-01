@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography, Card, CardContent, CardMedia, IconButton } from "@mui/material";
+import { Box, Typography, Card, CardContent, CardMedia, IconButton, Container } from "@mui/material";
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import SchoolIcon from '@mui/icons-material/School';
@@ -66,31 +66,40 @@ const CofounderCard = ({ founder }) => (
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
-    boxShadow: '0px 6px 30px 0px rgba(34,34,34,0.12)'
+    boxShadow: '0px 6px 30px 0px rgba(34,34,34,0.12)',
+    transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+    '&:hover': {
+      transform: 'translateY(-8px)',
+      boxShadow: '0px 12px 40px 0px rgba(34,34,34,0.2)',
+    }
   }}>
     <CardMedia
       component="img"
-      height="320"
+      height="280"
       image={process.env.PUBLIC_URL + founder.img}
       alt={founder.name}
       sx={{ objectFit: 'cover' }}
     />
-    <CardContent sx={{ flexGrow: 1, p: 3 }}>
-      <Typography variant="body1" sx={{ color: '#72be44', fontWeight: 'bold' }}>
+    <CardContent sx={{ flexGrow: 1, p: { xs: 2, md: 3 } }}>
+      <Typography variant="body1" sx={{ color: '#72be44', fontWeight: 'bold', mb: 1 }}>
         {founder.title}
       </Typography>
-      <Typography variant="h6" component="div" sx={{ fontWeight: 'bold', my: 0.5 }}>
+      <Typography variant="h6" component="div" sx={{ fontWeight: 'bold', my: 0.5, fontSize: { xs: '1.1rem', md: '1.25rem' } }}>
         {founder.name}
       </Typography>
       {founder.bio && (
-        <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
+        <Typography variant="body2" color="text.secondary" sx={{ mt: 1, lineHeight: 1.6 }}>
           {founder.bio}
         </Typography>
       )}
     </CardContent>
-    <Box sx={{ p: 1, px: 2 }}>
-      <IconButton aria-label="linkedin"><LinkedInIcon /></IconButton>
-      <IconButton aria-label="twitter"><TwitterIcon /></IconButton>
+    <Box sx={{ p: 1, px: 2, pb: 2 }}>
+      <IconButton aria-label="linkedin" sx={{ '&:hover': { color: '#0077b5' } }}>
+        <LinkedInIcon />
+      </IconButton>
+      <IconButton aria-label="twitter" sx={{ '&:hover': { color: '#1DA1F2' } }}>
+        <TwitterIcon />
+      </IconButton>
     </Box>
   </Card>
 );
@@ -101,46 +110,84 @@ export default function AboutSection({ language }) {
   // What We Do items
   const whatWeDoItems = [
     {
-      icon: <SchoolIcon sx={{ fontSize: 48, color: '#72be44' }} />,
+      icon: <SchoolIcon sx={{ fontSize: { xs: 36, md: 48 }, color: '#72be44' }} />,
       title: language === 'en' ? 'Access to Quality Education' : 'गुणवत्तापूर्ण शिक्षा तक पहुँच',
       desc: language === 'en' ? 'Empowering children with learning opportunities.' : 'बच्चों को सीखने के अवसर प्रदान करना।',
     },
     {
-      icon: <HandshakeIcon sx={{ fontSize: 48, color: '#72be44' }} />,
+      icon: <HandshakeIcon sx={{ fontSize: { xs: 36, md: 48 }, color: '#72be44' }} />,
       title: language === 'en' ? 'Bridge Course for Non-School Going Children' : 'गैर-स्कूल जाने वाले बच्चों के लिए ब्रिज कोर्स',
       desc: language === 'en' ? 'Helping out-of-school children catch up.' : 'स्कूल से बाहर बच्चों की मदद करना।',
     },
     {
-      icon: <Diversity3Icon sx={{ fontSize: 48, color: '#72be44' }} />,
+      icon: <Diversity3Icon sx={{ fontSize: { xs: 36, md: 48 }, color: '#72be44' }} />,
       title: language === 'en' ? 'Remedial Education Support' : 'सहायक शिक्षा समर्थन',
       desc: language === 'en' ? 'Personalized help for struggling students.' : 'संघर्षरत छात्रों के लिए व्यक्तिगत सहायता।',
     },
     {
-      icon: <WorkspacePremiumIcon sx={{ fontSize: 48, color: '#72be44' }} />,
+      icon: <WorkspacePremiumIcon sx={{ fontSize: { xs: 36, md: 48 }, color: '#72be44' }} />,
       title: language === 'en' ? 'Scholarship Support for Continued Education' : 'निरंतर शिक्षा के लिए छात्रवृत्ति समर्थन',
       desc: language === 'en' ? 'Enabling bright minds to pursue their dreams.' : 'प्रतिभाशाली छात्रों को उनके सपनों को पूरा करने में मदद करना।',
     },
   ];
 
   return (
-    <Box id="about" sx={{ py: { xs: 6, md: 10 }, backgroundColor: "#fff" }}>
-      <Box sx={{ maxWidth: "1200px", mx: "auto", px: 3 }}>
+    <Box id="about" sx={{ py: { xs: 6, md: 8 }, backgroundColor: "#fff" }}>
+      <Container maxWidth="lg" sx={{ px: { xs: 2, sm: 3 } }}>
         {/* What We Do Section */}
         <Box sx={{ textAlign: 'center', mb: { xs: 6, md: 8 } }}>
-          <Typography variant="h3" component="h2" sx={{ fontWeight: 'bold', color: '#222', mb: 2 }}>
+          <Typography 
+            variant="h3" 
+            component="h2" 
+            sx={{ 
+              fontWeight: 'bold', 
+              color: '#222', 
+              mb: { xs: 2, md: 3 },
+              fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem' },
+              lineHeight: { xs: 1.2, md: 1.1 },
+            }}
+          >
             {language === 'en' ? 'What We Do' : 'हम क्या करते हैं'}
           </Typography>
-          <Typography variant="h6" sx={{ color: '#555', maxWidth: 800, mx: 'auto', fontWeight: 400, mb: 6 }}>
+          <Typography 
+            variant="h6" 
+            sx={{ 
+              color: '#555', 
+              maxWidth: 800, 
+              mx: 'auto', 
+              fontWeight: 400, 
+              mb: { xs: 4, md: 6 },
+              fontSize: { xs: '1rem', md: '1.25rem' },
+              lineHeight: 1.6,
+              px: { xs: 1, md: 0 },
+            }}
+          >
             {data.aboutText}
           </Typography>
-          {/* Creative horizontal row */}
-          <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, alignItems: 'center', justifyContent: 'center', gap: { xs: 4, md: 2 }, mb: 6 }}>
+          
+          {/* Creative horizontal row - Responsive */}
+          <Box sx={{ 
+            display: 'flex', 
+            flexDirection: { xs: 'column', lg: 'row' }, 
+            alignItems: 'center', 
+            justifyContent: 'center', 
+            gap: { xs: 4, lg: 2 }, 
+            mb: { xs: 6, md: 8 },
+            flexWrap: 'wrap',
+          }}>
             {whatWeDoItems.map((item, idx) => (
               <React.Fragment key={idx}>
-                <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', minWidth: 180, maxWidth: 220 }}>
+                <Box sx={{ 
+                  display: 'flex', 
+                  flexDirection: 'column', 
+                  alignItems: 'center', 
+                  minWidth: { xs: '100%', sm: 200, lg: 180 }, 
+                  maxWidth: { xs: '100%', sm: 250, lg: 220 },
+                  flex: { xs: '1 1 100%', lg: '0 0 auto' },
+                }}>
                   <Box sx={{
-                    width: 90,
-                    height: 90,
+                    width: { xs: 70, md: 90 },
+                    height: { xs: 70, md: 90 },
                     borderRadius: '50%',
                     border: '2.5px dashed #72be44',
                     display: 'flex',
@@ -151,35 +198,80 @@ export default function AboutSection({ language }) {
                   }}>
                     {item.icon}
                   </Box>
-                  <Typography variant="subtitle1" sx={{ fontWeight: 700, fontStyle: 'italic', textAlign: 'center', mb: 1 }}>
+                  <Typography 
+                    variant="subtitle1" 
+                    sx={{ 
+                      fontWeight: 700, 
+                      fontStyle: 'italic', 
+                      textAlign: 'center', 
+                      mb: 1,
+                      fontSize: { xs: '1rem', md: '1.125rem' },
+                      lineHeight: 1.3,
+                    }}
+                  >
                     {item.title}
                   </Typography>
-                  <Typography variant="body2" sx={{ color: '#555', textAlign: 'center' }}>
+                  <Typography 
+                    variant="body2" 
+                    sx={{ 
+                      color: '#555', 
+                      textAlign: 'center',
+                      fontSize: { xs: '0.875rem', md: '1rem' },
+                      lineHeight: 1.4,
+                      maxWidth: { xs: '100%', sm: 200 },
+                    }}
+                  >
                     {item.desc}
                   </Typography>
                 </Box>
                 {idx < whatWeDoItems.length - 1 && (
-                  <ArrowForwardIosIcon sx={{ color: '#b5d7a6', fontSize: 32, mx: { xs: 0, md: 2 }, my: { xs: 2, md: 0 }, alignSelf: 'center' }} />
+                  <ArrowForwardIosIcon sx={{ 
+                    color: '#b5d7a6', 
+                    fontSize: { xs: 24, md: 32 }, 
+                    mx: { xs: 0, lg: 2 }, 
+                    my: { xs: 2, lg: 0 }, 
+                    alignSelf: 'center',
+                    transform: { xs: 'rotate(90deg)', lg: 'none' },
+                  }} />
                 )}
               </React.Fragment>
             ))}
           </Box>
         </Box>
+        
         {/* Minds Behind the Mission Section */}
         <Box sx={{ textAlign: 'center', mb: { xs: 6, md: 8 } }}>
-          <Typography variant="h3" component="h2" sx={{ fontWeight: 'bold', color: '#222' }}>
+          <Typography 
+            variant="h3" 
+            component="h2" 
+            sx={{ 
+              fontWeight: 'bold', 
+              color: '#222',
+              fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem' },
+              lineHeight: { xs: 1.2, md: 1.1 },
+            }}
+          >
             {data.heading}
           </Typography>
         </Box>
-        {/* Replaced Grid with Box for single-row 30/30/30 layout */}
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', gap: 3 }}>
+        
+        {/* Founders - Original horizontal layout for desktop, responsive for mobile */}
+        <Box sx={{ 
+          display: { xs: 'block', lg: 'flex' }, 
+          justifyContent: 'space-between', 
+          gap: { xs: 3, lg: 3 },
+          flexDirection: { xs: 'column', lg: 'row' }
+        }}>
           {data.cofounders.map((founder, i) => (
-            <Box key={i} sx={{ flex: '0 0 30%' }}>
+            <Box key={i} sx={{ 
+              flex: { xs: '1 1 100%', lg: '0 0 30%' },
+              mb: { xs: 3, lg: 0 }
+            }}>
               <CofounderCard founder={founder} />
             </Box>
           ))}
         </Box>
-      </Box>
+      </Container>
     </Box>
   );
 }

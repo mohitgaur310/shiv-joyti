@@ -14,6 +14,7 @@ import {
   Select,
   useTheme,
   useMediaQuery,
+  Divider,
 } from "@mui/material";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -235,16 +236,45 @@ export default function Header({ language, setLanguage }) {
               </ListItem>
             )
           )}
-          <ListItem button component={Link} to="/donate" onClick={toggleDrawer(false)}>
+          
+          {/* Language Selector for Mobile */}
+          <Divider sx={{ my: 2 }} />
+          <ListItem sx={{ flexDirection: 'column', alignItems: 'flex-start', px: 3 }}>
+            <Typography variant="body2" sx={{ color: '#666', mb: 1, fontWeight: 500 }}>
+              {language === "en" ? "Language" : "भाषा"}
+            </Typography>
+            <Select
+              value={language}
+              onChange={(e) => setLanguage(e.target.value)}
+              size="small"
+              sx={{
+                color: "#666",
+                minWidth: 120,
+                "& .MuiSelect-select": { padding: "8px 12px" },
+              }}
+            >
+              <MenuItem value="en">English</MenuItem>
+              <MenuItem value="hi">हिंदी</MenuItem>
+            </Select>
+          </ListItem>
+          
+          <Divider sx={{ my: 2 }} />
+          
+          {/* Donate Button for Mobile */}
+          <ListItem sx={{ px: 3, pb: 3 }}>
             <Button
               variant="contained"
+              component={Link}
+              to="/donate"
               fullWidth
+              onClick={toggleDrawer(false)}
               sx={{
-                backgroundColor: "white",
-                color: "#666",
+                backgroundColor: "#72be44",
+                color: "#fff",
+                py: 1.5,
+                fontWeight: "bold",
                 "&:hover": {
-                  background:
-                    "radial-gradient(at bottom center, #72be44 0, #7dc657 100%)",
+                  background: "radial-gradient(at bottom center, #5aa237 0, #6fb849 100%)",
                   color: "#fff",
                 },
               }}
