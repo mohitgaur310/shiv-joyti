@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useContext } from "react";
 import AboutSection from "../About/AboutUs";
-import { Typography, Box, Button } from "@mui/material";
+import { Typography, Box, Button, Container } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -54,7 +54,7 @@ export default function HomePage({ language }) {
 
   return (
     <>
-      <Box >
+      <Box sx={{ pt: { xs: 7, md: 8 } }}>
         <Swiper
           modules={[Autoplay]}
           autoplay={{ delay: 3000, disableOnInteraction: false }}
@@ -65,7 +65,7 @@ export default function HomePage({ language }) {
               <Box
                 sx={{
                   position: "relative",
-                  height: { xs: 400, sm: 600 },
+                  height: { xs: 300, sm: 400, md: 500, lg: 600 },
                   overflow: "hidden",
                 }}
               >
@@ -88,32 +88,64 @@ export default function HomePage({ language }) {
                     justifyContent: "center",
                     alignItems: "center",
                     color: "white",
-                    px: 3,
+                    px: { xs: 2, sm: 3, md: 4 },
                     textAlign: "center",
-                    opacity: 0.8,
+                    opacity: 0.9,
+                    pt: { xs: 4, md: 0 }, // Add top padding for mobile to avoid header overlap
                   }}
                 >
-                  <Typography variant="h3" gutterBottom>
-                    {content[language].title}
-                  </Typography>
-                  <Typography variant="h6" sx={{ mb: 2 }}>
-                    {content[language].paragraph}
-                  </Typography>
-                  <Button
-                    variant="contained"
-                    sx={{
-                      backgroundColor: "white",
-                      color: "#666",
-                      px: 2,
-                      "&:hover": {
-                        background:
-                          "radial-gradient(at bottom center, #72be44 0, #7dc657 100%)",
-                        color: "white",
-                      },
-                    }}
-                  >
-                    {content[language].button}
-                  </Button>
+                  <Container maxWidth="lg">
+                    <Typography 
+                      variant="h2" 
+                      sx={{ 
+                        fontWeight: "bold",
+                        mb: { xs: 2, md: 3 },
+                        fontSize: { xs: "1.75rem", sm: "2.5rem", md: "3rem", lg: "3.75rem" },
+                        lineHeight: { xs: 1.2, md: 1.1 },
+                        textShadow: "2px 2px 4px rgba(0,0,0,0.5)",
+                      }}
+                    >
+                      {content[language].title}
+                    </Typography>
+                    <Typography 
+                      variant="h6" 
+                      sx={{ 
+                        mb: { xs: 3, md: 4 },
+                        fontSize: { xs: "1rem", sm: "1.125rem", md: "1.25rem" },
+                        lineHeight: { xs: 1.4, md: 1.5 },
+                        maxWidth: { xs: "100%", md: "80%" },
+                        mx: "auto",
+                        textShadow: "1px 1px 2px rgba(0,0,0,0.5)",
+                        opacity: 0.95,
+                      }}
+                    >
+                      {content[language].paragraph}
+                    </Typography>
+                    <Button
+                      variant="contained"
+                      size="large"
+                      onClick={scrollToAbout}
+                      sx={{
+                        backgroundColor: "white",
+                        color: "#666",
+                        px: { xs: 3, md: 4 },
+                        py: { xs: 1.5, md: 2 },
+                        fontSize: { xs: "1rem", md: "1.125rem" },
+                        fontWeight: "bold",
+                        borderRadius: 2,
+                        boxShadow: "0 4px 12px rgba(0,0,0,0.3)",
+                        "&:hover": {
+                          background: "radial-gradient(at bottom center, #72be44 0, #7dc657 100%)",
+                          color: "white",
+                          transform: "translateY(-2px)",
+                          boxShadow: "0 6px 20px rgba(0,0,0,0.4)",
+                        },
+                        transition: "all 0.3s ease",
+                      }}
+                    >
+                      {content[language].button}
+                    </Button>
+                  </Container>
                 </Box>
               </Box>
             </SwiperSlide>

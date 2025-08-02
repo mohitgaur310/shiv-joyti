@@ -114,7 +114,6 @@ export default function ContactPage({ language }) {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
-  // const [hoveredSocial, setHoveredSocial] = useState(null);
   const [particles, setParticles] = useState([]);
 
   useEffect(() => {
@@ -147,9 +146,8 @@ export default function ContactPage({ language }) {
     setShowSuccess(true);
   };
 
-  
   return (
-    <Box sx={{ minHeight: "100vh", pt: 8, pb: 6, position: "relative", overflow: "hidden" }}>
+    <Box sx={{ minHeight: "100vh", pt: { xs: 7, md: 8 }, pb: 6, position: "relative", overflow: "hidden" }}>
       {/* Animated Background Particles */}
       {particles.map((particle) => (
         <motion.div
@@ -182,10 +180,10 @@ export default function ContactPage({ language }) {
       <Box
         sx={{
           background: "linear-gradient(135deg, #72be44 0%, #7dc657 50%, #5aa237 100%)",
-          py: 8,
-          
+          py: { xs: 6, md: 8 },
           position: "relative",
           overflow: "hidden",
+          mt: { xs: 2, md: 0 }, // Add margin top for mobile to avoid header overlap
         }}
       >
         {/* Floating Emojis */}
@@ -194,7 +192,7 @@ export default function ContactPage({ language }) {
             key={index}
             style={{
               position: "absolute",
-              fontSize: "2rem",
+              fontSize: { xs: "1.5rem", md: "2rem" },
               zIndex: 1,
             }}
             initial={{
@@ -223,13 +221,15 @@ export default function ContactPage({ language }) {
             transition={{ duration: 0.8 }}
           >
             <Typography
-              variant="h3"
+              variant="h2"
               sx={{
                 color: "white",
                 textAlign: "center",
                 fontWeight: "bold",
-                mb: 1,
+                mb: { xs: 1, md: 2 },
                 letterSpacing: 1,
+                fontSize: { xs: "2rem", sm: "2.5rem", md: "3rem" },
+                lineHeight: { xs: 1.2, md: 1.1 },
               }}
             >
               {content[language].title}
@@ -242,6 +242,9 @@ export default function ContactPage({ language }) {
                 fontStyle: "italic",
                 maxWidth: 600,
                 mx: "auto",
+                fontSize: { xs: "1rem", md: "1.25rem" },
+                lineHeight: 1.4,
+                px: { xs: 2, md: 0 },
               }}
             >
               {content[language].subtitle}
@@ -250,22 +253,30 @@ export default function ContactPage({ language }) {
         </Container>
       </Box>
 
-      <Container maxWidth="md" sx={{ mt: -4, position: "relative", zIndex: 2 }}>
+      <Container maxWidth="lg" sx={{ mt: { xs: -2, md: -4 }, position: "relative", zIndex: 2 }}>
         <Paper
           elevation={3}
           sx={{
-            p: { xs: 2, sm: 4 },
+            p: { xs: 3, sm: 4, md: 5 },
             borderRadius: 4,
             background: "#fff",
-            maxWidth: 900,
             mx: "auto",
             mb: 6,
           }}
         >
-          <Grid container spacing={4} alignItems="flex-start" justifyContent="center">
+          <Grid container spacing={{ xs: 3, md: 4 }} alignItems="flex-start" justifyContent="center">
             {/* Contact Form */}
-            <Grid item xs={12} md={6}>
-              <Typography variant="subtitle1" sx={{ fontWeight: 600, letterSpacing: 2, mb: 2, color: "#5aa237" }}>
+            <Grid item xs={12} lg={6}>
+              <Typography 
+                variant="h6" 
+                sx={{ 
+                  fontWeight: 600, 
+                  letterSpacing: 2, 
+                  mb: { xs: 2, md: 3 }, 
+                  color: "#5aa237",
+                  fontSize: { xs: "1rem", md: "1.125rem" },
+                }}
+              >
                 {content[language].sections.inquiry}
               </Typography>
               <Box component="form" onSubmit={handleSubmit}>
@@ -276,7 +287,7 @@ export default function ContactPage({ language }) {
                   onChange={handleInputChange("name")}
                   required
                   variant="outlined"
-                  sx={{ mb: 2 }}
+                  sx={{ mb: { xs: 2, md: 3 } }}
                 />
                 <TextField
                   fullWidth
@@ -286,7 +297,7 @@ export default function ContactPage({ language }) {
                   onChange={handleInputChange("email")}
                   required
                   variant="outlined"
-                  sx={{ mb: 2 }}
+                  sx={{ mb: { xs: 2, md: 3 } }}
                 />
                 <TextField
                   fullWidth
@@ -294,7 +305,7 @@ export default function ContactPage({ language }) {
                   value={formData.phone || ""}
                   onChange={e => setFormData({ ...formData, phone: e.target.value })}
                   variant="outlined"
-                  sx={{ mb: 2 }}
+                  sx={{ mb: { xs: 2, md: 3 } }}
                 />
                 <TextField
                   fullWidth
@@ -304,7 +315,7 @@ export default function ContactPage({ language }) {
                   value={formData.interest || ""}
                   onChange={e => setFormData({ ...formData, interest: e.target.value })}
                   variant="outlined"
-                  sx={{ mb: 2 }}
+                  sx={{ mb: { xs: 2, md: 3 } }}
                 >
                   <option value="" disabled>{language === "en" ? "Select An Interest" : "रुचि चुनें"}</option>
                   <option value="volunteer">{language === "en" ? "Volunteer" : "स्वयंसेवक"}</option>
@@ -321,7 +332,7 @@ export default function ContactPage({ language }) {
                   onChange={handleInputChange("message")}
                   required
                   variant="outlined"
-                  sx={{ mb: 3 }}
+                  sx={{ mb: { xs: 3, md: 4 } }}
                 />
                 <Button
                   type="submit"
@@ -331,11 +342,12 @@ export default function ContactPage({ language }) {
                   sx={{
                     background: "linear-gradient(45deg, #72be44, #7dc657)",
                     color: "white",
-                    px: 4,
-                    py: 1.5,
+                    px: { xs: 3, md: 4 },
+                    py: { xs: 1.5, md: 2 },
                     fontWeight: "bold",
                     borderRadius: 2,
                     boxShadow: "none",
+                    fontSize: { xs: "1rem", md: "1.125rem" },
                     '&:hover': {
                       background: "linear-gradient(45deg, #5aa237, #6fb849)",
                     },
@@ -349,45 +361,94 @@ export default function ContactPage({ language }) {
                 </Button>
               </Box>
             </Grid>
+            
             {/* Contact Details */}
-            <Grid item xs={12} md={6}>
-              <Typography variant="subtitle1" sx={{ fontWeight: 600, letterSpacing: 2, mb: 2, color: "#5aa237" }}>
+            <Grid item xs={12} lg={6}>
+              <Typography 
+                variant="h6" 
+                sx={{ 
+                  fontWeight: 600, 
+                  letterSpacing: 2, 
+                  mb: { xs: 2, md: 3 }, 
+                  color: "#5aa237",
+                  fontSize: { xs: "1rem", md: "1.125rem" },
+                }}
+              >
                 {content[language].sections.details}
               </Typography>
-                             <Box sx={{ mb: 2 }}>
-                 <Typography variant="body2" sx={{ color: "#333", mb: 1 }}>
-                   <span style={{ fontWeight: 600 }}>Email:</span> {content[language].contact.email}
-                 </Typography>
-                 <Typography variant="body2" sx={{ color: "#333", mb: 1 }}>
-                   <span style={{ fontWeight: 600 }}>Phone:</span> {content[language].contact.phone}
-                 </Typography>
-                 <Typography variant="body2" sx={{ color: "#333", mb: 2 }}>
-                   <span style={{ fontWeight: 600 }}>Address:</span><br />
-                   {content[language].contact.address}
-                 </Typography>
-               </Box>
-              <Divider sx={{ my: 2 }} />
+              <Box sx={{ mb: { xs: 3, md: 4 } }}>
+                <Typography 
+                  variant="body1" 
+                  sx={{ 
+                    color: "#333", 
+                    mb: { xs: 1, md: 2 },
+                    fontSize: { xs: "0.875rem", md: "1rem" },
+                    lineHeight: 1.5,
+                  }}
+                >
+                  <span style={{ fontWeight: 600 }}>Email:</span> {content[language].contact.email}
+                </Typography>
+                <Typography 
+                  variant="body1" 
+                  sx={{ 
+                    color: "#333", 
+                    mb: { xs: 1, md: 2 },
+                    fontSize: { xs: "0.875rem", md: "1rem" },
+                    lineHeight: 1.5,
+                  }}
+                >
+                  <span style={{ fontWeight: 600 }}>Phone:</span> {content[language].contact.phone}
+                </Typography>
+                <Typography 
+                  variant="body1" 
+                  sx={{ 
+                    color: "#333", 
+                    mb: { xs: 2, md: 3 },
+                    fontSize: { xs: "0.875rem", md: "1rem" },
+                    lineHeight: 1.5,
+                  }}
+                >
+                  <span style={{ fontWeight: 600 }}>Address:</span><br />
+                  {content[language].contact.address}
+                </Typography>
+              </Box>
+              <Divider sx={{ my: { xs: 2, md: 3 } }} />
               <Box>
-                <Typography variant="subtitle2" sx={{ fontWeight: 600, color: "#5aa237", mb: 1 }}>
+                <Typography 
+                  variant="subtitle2" 
+                  sx={{ 
+                    fontWeight: 600, 
+                    color: "#5aa237", 
+                    mb: { xs: 1, md: 2 },
+                    fontSize: { xs: "0.875rem", md: "1rem" },
+                  }}
+                >
                   Follow Us
                 </Typography>
-                <Box sx={{ display: "flex", gap: 1, mt: 1 }}>
+                <Box sx={{ 
+                  display: "flex", 
+                  gap: { xs: 1, md: 2 }, 
+                  mt: 1,
+                  flexWrap: "wrap",
+                  justifyContent: { xs: "center", lg: "flex-start" },
+                }}>
                   {socialLinks.map((social, index) => (
                     <IconButton
                       key={social.label}
                       sx={{
-                        width: 40,
-                        height: 40,
+                        width: { xs: 36, md: 40 },
+                        height: { xs: 36, md: 40 },
                         background: social.color,
                         color: "white",
                         '&:hover': {
                           background: social.color,
                           opacity: 0.85,
+                          transform: "scale(1.1)",
                         },
                         transition: "all 0.3s ease",
                       }}
                     >
-                      <social.icon />
+                      <social.icon sx={{ fontSize: { xs: "1.25rem", md: "1.5rem" } }} />
                     </IconButton>
                   ))}
                 </Box>

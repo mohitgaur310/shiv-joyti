@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Typography, Grid, Card, CardContent, CardMedia, Button, Chip, Dialog, DialogTitle, DialogContent, IconButton } from "@mui/material";
+import { Box, Typography, Grid, Card, CardContent, CardMedia, Button, Chip, Dialog, DialogTitle, DialogContent, IconButton, Container } from "@mui/material";
 import SchoolIcon from '@mui/icons-material/School';
 import Diversity3Icon from '@mui/icons-material/Diversity3';
 import FavoriteIcon from '@mui/icons-material/Favorite';
@@ -24,7 +24,7 @@ const initiatives = [
     image: "https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=600&q=80",
     descriptionEn: "We empower underprivileged children with access to quality education, digital learning, and creative opportunities to shape a brighter future.",
     descriptionHi: "हम वंचित बच्चों को गुणवत्तापूर्ण शिक्षा, डिजिटल लर्निंग और रचनात्मक अवसरों तक पहुंच प्रदान करके सशक्त बनाते हैं।",
-    icon: <SchoolIcon sx={{ fontSize: 36, color: '#72be44' }} />, 
+    icon: <SchoolIcon sx={{ fontSize: { xs: 28, md: 36 }, color: '#72be44' }} />, 
     statEn: "500+ children educated",
     statHi: "500+ बच्चों को शिक्षित किया",
     detailsEn: "Our Education for All initiative has reached over 500 children in rural and urban areas, providing them with books, digital resources, and mentorship. We partner with local schools and volunteers to ensure every child has a chance to learn and grow.",
@@ -36,7 +36,7 @@ const initiatives = [
     image: "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80",
     descriptionEn: "Our programs uplift women through skill-building, entrepreneurship, and leadership, fostering independence and confidence.",
     descriptionHi: "हमारे कार्यक्रम महिलाओं को कौशल निर्माण, उद्यमिता और नेतृत्व के माध्यम से सशक्त बनाते हैं।",
-    icon: <Diversity3Icon sx={{ fontSize: 36, color: '#72be44' }} />, 
+    icon: <Diversity3Icon sx={{ fontSize: { xs: 28, md: 36 }, color: '#72be44' }} />, 
     statEn: "200+ women empowered",
     statHi: "200+ महिलाओं को सशक्त बनाया",
     detailsEn: "We run workshops and training sessions for women, helping them develop skills in tailoring, digital literacy, and small business management. Many have started their own ventures or found meaningful employment.",
@@ -48,7 +48,7 @@ const initiatives = [
     image: "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80",
     descriptionEn: "We ensure access to healthcare, nutrition, and wellness for vulnerable communities, promoting healthy, happy lives.",
     descriptionHi: "हम कमजोर समुदायों के लिए स्वास्थ्य देखभाल, पोषण और कल्याण तक पहुंच सुनिश्चित करते हैं।",
-    icon: <FavoriteIcon sx={{ fontSize: 36, color: '#72be44' }} />, 
+    icon: <FavoriteIcon sx={{ fontSize: { xs: 28, md: 36 }, color: '#72be44' }} />, 
     statEn: "1000+ meals served",
     statHi: "1000+ भोजन परोसे गए",
     detailsEn: "Our health camps and nutrition drives have provided over 1000 healthy meals and medical checkups to children and families in need. We also conduct awareness sessions on hygiene and preventive care.",
@@ -60,7 +60,7 @@ const initiatives = [
     image: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80",
     descriptionEn: "Engaging with local communities, we drive positive change through events, workshops, and sustainable development projects.",
     descriptionHi: "स्थानीय समुदायों के साथ जुड़कर, हम कार्यक्रमों, कार्यशालाओं और सतत विकास परियोजनाओं के माध्यम से सकारात्मक बदलाव लाते हैं।",
-    icon: <EmojiEventsIcon sx={{ fontSize: 36, color: '#72be44' }} />, 
+    icon: <EmojiEventsIcon sx={{ fontSize: { xs: 28, md: 36 }, color: '#72be44' }} />, 
     statEn: "50+ events held",
     statHi: "50+ कार्यक्रम आयोजित",
     detailsEn: "From clean-up drives to cultural festivals, our outreach events bring people together and foster a sense of belonging. We work with local leaders to identify needs and create lasting impact.",
@@ -79,23 +79,49 @@ export default function InitiativesPage({ language, setLanguage }) {
   const handleClose = () => setOpen(false);
 
   return (
-    <Box sx={{ minHeight: "100vh", pt: 8, pb: 6, position: "relative" }}>
+    <Box sx={{ minHeight: "100vh", pt: { xs: 7, md: 8 }, pb: 6, position: "relative" }}>
       {/* Green Hero Section */}
       <Box sx={{
         background: 'linear-gradient(135deg, #72be44 0%, #7dc657 50%, #5aa237 100%)',
-        py: 8,
+        py: { xs: 6, md: 8 },
         textAlign: 'center',
+        mt: { xs: 0, md: 0 }, // Add margin top for mobile to avoid header overlap
       }}>
-        <Typography variant="h3" sx={{ color: 'white', fontWeight: 'bold', mb: 1, letterSpacing: 1 }}>
-          {content[language].title}
-        </Typography>
-        <Typography variant="h6" sx={{ color: 'white', opacity: 0.92, fontStyle: 'italic', maxWidth: 600, mx: 'auto' }}>
-          {content[language].subtitle}
-        </Typography>
+        <Container maxWidth="lg">
+          <Typography 
+            variant="h2" 
+            sx={{ 
+              color: 'white', 
+              fontWeight: 'bold', 
+              mb: { xs: 1, md: 2 }, 
+              letterSpacing: 1,
+              fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem' },
+              lineHeight: { xs: 1.2, md: 1.1 },
+            }}
+          >
+            {content[language].title}
+          </Typography>
+          <Typography 
+            variant="h6" 
+            sx={{ 
+              color: 'white', 
+              opacity: 0.92, 
+              fontStyle: 'italic', 
+              maxWidth: 600, 
+              mx: 'auto',
+              fontSize: { xs: '1rem', md: '1.25rem' },
+              lineHeight: 1.4,
+              px: { xs: 2, md: 0 },
+            }}
+          >
+            {content[language].subtitle}
+          </Typography>
+        </Container>
       </Box>
-      {/* Existing Content */}
-      <Box sx={{ py: { xs: 4, md: 8 } }}>
-        <Box sx={{ maxWidth: '1200px', mx: 'auto', px: 3 }}>
+      
+      {/* Initiatives Content */}
+      <Container maxWidth="lg" sx={{ px: { xs: 2, sm: 3 } }}>
+        <Box sx={{ py: { xs: 4, md: 8 } }}>
           <Grid container spacing={5} justifyContent="center">
             {initiatives.map((item, idx) => (
               <Grid item xs={12} sm={6} md={4} key={idx} sx={{ display: 'flex', justifyContent: 'center' }}>
@@ -153,7 +179,9 @@ export default function InitiativesPage({ language, setLanguage }) {
             ))}
           </Grid>
         </Box>
-      </Box>
+      </Container>
+
+      {/* Detail Dialog */}
       <Dialog open={open} onClose={handleClose} maxWidth="sm" fullWidth>
         <DialogTitle sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontWeight: 'bold' }}>
           {selected !== null && (language === 'hi' ? initiatives[selected].titleHi : initiatives[selected].titleEn)}

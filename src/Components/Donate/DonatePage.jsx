@@ -79,14 +79,15 @@ export default function DonatePage({ language }) {
   };
 
   return (
-    <Box sx={{ minHeight: "100vh", backgroundColor: "#f9f9f9", pt: 8, pb: 6 }}>
+    <Box sx={{ minHeight: "100vh", backgroundColor: "#f9f9f9", pt: { xs: 7, md: 8 }, pb: 6 }}>
       {/* Hero Section */}
       <Box
         sx={{
           background: "linear-gradient(135deg, #72be44 0%, #7dc657 50%, #5aa237 100%)",
-          py: 8,
+          py: { xs: 6, md: 8 },
           color: "white",
           textAlign: "center",
+          mt: { xs: 0, md: 0 }, // Add margin top for mobile to avoid header overlap
         }}
       >
         <Container maxWidth="md">
@@ -95,17 +96,38 @@ export default function DonatePage({ language }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <Typography variant="h2" component="h1" fontWeight="bold" gutterBottom>
+            <Typography 
+              variant="h2" 
+              component="h1" 
+              fontWeight="bold" 
+              gutterBottom
+              sx={{
+                fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem' },
+                lineHeight: { xs: 1.2, md: 1.1 },
+                mb: { xs: 2, md: 3 },
+              }}
+            >
               {content[language].title}
             </Typography>
-            <Typography variant="h6" component="p" sx={{ opacity: 0.9, maxWidth: 600, mx: "auto" }}>
+            <Typography 
+              variant="h6" 
+              component="p" 
+              sx={{ 
+                opacity: 0.9, 
+                maxWidth: 600, 
+                mx: "auto",
+                fontSize: { xs: '1rem', md: '1.25rem' },
+                lineHeight: 1.4,
+                px: { xs: 2, md: 0 },
+              }}
+            >
               {content[language].subtitle}
             </Typography>
           </motion.div>
         </Container>
       </Box>
 
-      <Container maxWidth="sm" sx={{ mt: -6 }}>
+      <Container maxWidth="sm" sx={{ mt: { xs: -4, md: -6 } }}>
         <motion.div variants={containerVariants} initial="hidden" animate="visible">
           {/* --- Simplified Bank Details Card --- */}
           <motion.div variants={itemVariants}>
@@ -120,8 +142,16 @@ export default function DonatePage({ language }) {
               }}
             >
               <Stack spacing={3} alignItems="center">
-                <AccountBalance sx={{ fontSize: 50, color: "primary.main" }} />
-                <Typography variant="h4" fontWeight="bold" color="text.primary">
+                <AccountBalance sx={{ fontSize: { xs: 40, md: 50 }, color: "primary.main" }} />
+                <Typography 
+                  variant="h4" 
+                  fontWeight="bold" 
+                  color="text.primary"
+                  sx={{
+                    fontSize: { xs: '1.5rem', md: '2rem' },
+                    textAlign: 'center',
+                  }}
+                >
                   {content[language].bankDetails}
                 </Typography>
 
@@ -138,21 +168,43 @@ export default function DonatePage({ language }) {
                         display: "flex",
                         justifyContent: "space-between",
                         alignItems: "center",
-                        p: 2,
+                        p: { xs: 1.5, md: 2 },
                         borderRadius: 2,
                         backgroundColor: "grey.100",
                       }}
                     >
                       <Box>
-                        <Typography variant="body2" color="text.secondary">
+                        <Typography 
+                          variant="body2" 
+                          color="text.secondary"
+                          sx={{
+                            fontSize: { xs: '0.75rem', md: '0.875rem' },
+                            mb: 0.5,
+                          }}
+                        >
                           {item.label}
                         </Typography>
-                        <Typography variant="h6" fontWeight="medium" sx={{ fontFamily: "monospace" }}>
+                        <Typography 
+                          variant="h6" 
+                          fontWeight="medium" 
+                          sx={{ 
+                            fontFamily: "monospace",
+                            fontSize: { xs: '1rem', md: '1.125rem' },
+                            wordBreak: 'break-all',
+                          }}
+                        >
                           {item.value}
                         </Typography>
                       </Box>
                       <Tooltip title={content[language].copied.split('!')[0]} placement="top">
-                        <IconButton onClick={() => handleCopyToClipboard(item.value)} size="large">
+                        <IconButton 
+                          onClick={() => handleCopyToClipboard(item.value)} 
+                          size="large"
+                          sx={{
+                            width: { xs: 36, md: 40 },
+                            height: { xs: 36, md: 40 },
+                          }}
+                        >
                           <ContentCopy sx={{ color: "text.secondary" }} />
                         </IconButton>
                       </Tooltip>
@@ -164,18 +216,48 @@ export default function DonatePage({ language }) {
                 <Alert
                   icon={<Info fontSize="inherit" />}
                   severity="info"
-                  sx={{ width: "100%", mt: 2, justifyContent: "center" }}
+                  sx={{ 
+                    width: "100%", 
+                    mt: 2, 
+                    justifyContent: "center",
+                    fontSize: { xs: '0.875rem', md: '1rem' },
+                  }}
                 >
                   {content[language].note}
                 </Alert>
 
                 {/* --- Simplified Security Footer --- */}
-                <Stack direction="row" spacing={1} alignItems="center" sx={{ mt: 2, color: "text.secondary" }}>
-                  <Security fontSize="small" />
-                  <Typography variant="body2">{content[language].secure}</Typography>
-                  <Box component="span" sx={{ mx: 1 }}>•</Box>
-                  <VerifiedUser fontSize="small" />
-                  <Typography variant="body2">{content[language].trusted}</Typography>
+                <Stack 
+                  direction={{ xs: 'column', sm: 'row' }} 
+                  spacing={1} 
+                  alignItems="center" 
+                  sx={{ 
+                    mt: 2, 
+                    color: "text.secondary",
+                    textAlign: 'center',
+                  }}
+                >
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+                    <Security fontSize="small" />
+                    <Typography variant="body2" sx={{ fontSize: { xs: '0.75rem', md: '0.875rem' } }}>
+                      {content[language].secure}
+                    </Typography>
+                  </Box>
+                  <Box 
+                    component="span" 
+                    sx={{ 
+                      display: { xs: 'none', sm: 'block' },
+                      mx: 1 
+                    }}
+                  >
+                    •
+                  </Box>
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+                    <VerifiedUser fontSize="small" />
+                    <Typography variant="body2" sx={{ fontSize: { xs: '0.75rem', md: '0.875rem' } }}>
+                      {content[language].trusted}
+                    </Typography>
+                  </Box>
                 </Stack>
               </Stack>
             </Paper>
@@ -190,7 +272,14 @@ export default function DonatePage({ language }) {
         onClose={() => setSnackbarOpen(false)}
         anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
       >
-        <Alert onClose={() => setSnackbarOpen(false)} severity="success" sx={{ width: "100%" }}>
+        <Alert 
+          onClose={() => setSnackbarOpen(false)} 
+          severity="success" 
+          sx={{ 
+            width: "100%",
+            fontSize: { xs: '0.875rem', md: '1rem' },
+          }}
+        >
           {content[language].copied}
         </Alert>
       </Snackbar>
