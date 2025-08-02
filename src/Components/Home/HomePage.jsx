@@ -65,7 +65,7 @@ export default function HomePage({ language }) {
               <Box
                 sx={{
                   position: "relative",
-                  height: { xs: 300, sm: 400, md: 500, lg: 600 },
+                  height: { xs: 450, sm: 500, md: 550, lg: 600 },
                   overflow: "hidden",
                 }}
               >
@@ -74,7 +74,7 @@ export default function HomePage({ language }) {
                   alt={`slide-${i}`}
                   width="100%"
                   height="100%"
-                  style={{ objectFit: "cover", filter: "brightness(0.6)" }}
+                  style={{ objectFit: "cover", filter: "brightness(0.5)" }}
                 />
                 <Box
                   sx={{
@@ -88,10 +88,11 @@ export default function HomePage({ language }) {
                     justifyContent: "center",
                     alignItems: "center",
                     color: "white",
-                    px: { xs: 2, sm: 3, md: 4 },
+                    px: { xs: 3, sm: 4, md: 5 },
                     textAlign: "center",
-                    opacity: 0.9,
-                    pt: { xs: 4, md: 0 }, // Add top padding for mobile to avoid header overlap
+                    opacity: 0.95,
+                    pt: { xs: 6, md: 0 }, // Increased top padding for mobile to avoid header overlap
+                    pb: { xs: 4, md: 0 }, // Add bottom padding for mobile
                   }}
                 >
                   <Container maxWidth="lg">
@@ -99,10 +100,11 @@ export default function HomePage({ language }) {
                       variant="h2" 
                       sx={{ 
                         fontWeight: "bold",
-                        mb: { xs: 2, md: 3 },
-                        fontSize: { xs: "1.75rem", sm: "2.5rem", md: "3rem", lg: "3.75rem" },
-                        lineHeight: { xs: 1.2, md: 1.1 },
-                        textShadow: "2px 2px 4px rgba(0,0,0,0.5)",
+                        mb: { xs: 3, md: 4 },
+                        fontSize: { xs: "2.25rem", sm: "2.75rem", md: "3.25rem", lg: "3.75rem" },
+                        lineHeight: { xs: 1.1, md: 1.1 },
+                        textShadow: "3px 3px 6px rgba(0,0,0,0.7)",
+                        letterSpacing: { xs: "-0.02em", md: "-0.01em" },
                       }}
                     >
                       {content[language].title}
@@ -110,13 +112,14 @@ export default function HomePage({ language }) {
                     <Typography 
                       variant="h6" 
                       sx={{ 
-                        mb: { xs: 3, md: 4 },
-                        fontSize: { xs: "1rem", sm: "1.125rem", md: "1.25rem" },
-                        lineHeight: { xs: 1.4, md: 1.5 },
-                        maxWidth: { xs: "100%", md: "80%" },
+                        mb: { xs: 4, md: 5 },
+                        fontSize: { xs: "1.125rem", sm: "1.25rem", md: "1.375rem" },
+                        lineHeight: { xs: 1.5, md: 1.6 },
+                        maxWidth: { xs: "100%", md: "85%" },
                         mx: "auto",
-                        textShadow: "1px 1px 2px rgba(0,0,0,0.5)",
-                        opacity: 0.95,
+                        textShadow: "2px 2px 4px rgba(0,0,0,0.7)",
+                        opacity: 0.98,
+                        fontWeight: { xs: 400, md: 500 },
                       }}
                     >
                       {content[language].paragraph}
@@ -128,17 +131,18 @@ export default function HomePage({ language }) {
                       sx={{
                         backgroundColor: "white",
                         color: "#666",
-                        px: { xs: 3, md: 4 },
-                        py: { xs: 1.5, md: 2 },
-                        fontSize: { xs: "1rem", md: "1.125rem" },
+                        px: { xs: 4, md: 5 },
+                        py: { xs: 2, md: 2.5 },
+                        fontSize: { xs: "1.125rem", md: "1.25rem" },
                         fontWeight: "bold",
-                        borderRadius: 2,
-                        boxShadow: "0 4px 12px rgba(0,0,0,0.3)",
+                        borderRadius: 3,
+                        boxShadow: "0 6px 20px rgba(0,0,0,0.4)",
+                        minHeight: { xs: "48px", md: "56px" },
                         "&:hover": {
                           background: "radial-gradient(at bottom center, #72be44 0, #7dc657 100%)",
                           color: "white",
-                          transform: "translateY(-2px)",
-                          boxShadow: "0 6px 20px rgba(0,0,0,0.4)",
+                          transform: "translateY(-3px)",
+                          boxShadow: "0 8px 25px rgba(0,0,0,0.5)",
                         },
                         transition: "all 0.3s ease",
                       }}
