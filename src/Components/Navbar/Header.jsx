@@ -91,7 +91,7 @@ export default function Header({ language, setLanguage }) {
             onClick={handleHomeClick}
           >
             <img
-              src="/assests/logo_shivjyoti.png"
+              src="https://res.cloudinary.com/dewft820i/image/upload/v1754237553/android-chrome-192x192_gnhxwh.png"
               alt="SHIV JOYTI"
               style={{ height: 60 }}
             />
