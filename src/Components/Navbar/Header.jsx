@@ -41,7 +41,6 @@ export default function Header({ language, setLanguage }) {
     WebkitTextFillColor: "transparent",
   };
   const toggleDrawer = (open) => () => setOpen(open);
-  
 
   const buttonStyle = {
     color: "#666",
@@ -82,16 +81,20 @@ export default function Header({ language, setLanguage }) {
       <AppBar position="fixed" color="inherit" elevation={2}>
         <Toolbar sx={{ justifyContent: "space-between" }}>
           <Typography
-            variant="h6"
             component={Link}
             to="/"
             sx={{
               ...logoStyles,
-              cursor: 'pointer',
+              cursor: "pointer",
+              display: "inline-block",
             }}
             onClick={handleHomeClick}
           >
-            SHIV JOYTI
+            <img
+              src="/assests/logo_shivjyoti.png"
+              alt="SHIV JOYTI"
+              style={{ height: 60 }}
+            />
           </Typography>
 
           {!isMobile && (
@@ -236,11 +239,16 @@ export default function Header({ language, setLanguage }) {
               </ListItem>
             )
           )}
-          
+
           {/* Language Selector for Mobile */}
           <Divider sx={{ my: 2 }} />
-          <ListItem sx={{ flexDirection: 'column', alignItems: 'flex-start', px: 3 }}>
-            <Typography variant="body2" sx={{ color: '#666', mb: 1, fontWeight: 500 }}>
+          <ListItem
+            sx={{ flexDirection: "column", alignItems: "flex-start", px: 3 }}
+          >
+            <Typography
+              variant="body2"
+              sx={{ color: "#666", mb: 1, fontWeight: 500 }}
+            >
               {language === "en" ? "Language" : "भाषा"}
             </Typography>
             <Select
@@ -257,9 +265,9 @@ export default function Header({ language, setLanguage }) {
               <MenuItem value="hi">हिंदी</MenuItem>
             </Select>
           </ListItem>
-          
+
           <Divider sx={{ my: 2 }} />
-          
+
           {/* Donate Button for Mobile */}
           <ListItem sx={{ px: 3, pb: 3 }}>
             <Button
@@ -274,7 +282,8 @@ export default function Header({ language, setLanguage }) {
                 py: 1.5,
                 fontWeight: "bold",
                 "&:hover": {
-                  background: "radial-gradient(at bottom center, #5aa237 0, #6fb849 100%)",
+                  background:
+                    "radial-gradient(at bottom center, #5aa237 0, #6fb849 100%)",
                   color: "#fff",
                 },
               }}
