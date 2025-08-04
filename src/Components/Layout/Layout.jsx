@@ -15,8 +15,16 @@ export default function Layout({ children, language, setLanguage, ...rest }) {
 
   return (
     <ScrollContext.Provider value={{ registerScrollToTop, registerScrollToAbout, scrollToTop, scrollToAbout }}>
-      <Header  language={language} setLanguage={setLanguage} {...rest} />
-      <main style={{ minHeight: "70vh" }}>{children}</main>
+      <Header language={language} setLanguage={setLanguage} {...rest} />
+      <main 
+        style={{ 
+          minHeight: "70vh",
+          width: '100%',
+          overflowX: 'hidden',
+        }}
+      >
+        {children}
+      </main>
       <Footer language={language} setLanguage={setLanguage} />
     </ScrollContext.Provider>
   );

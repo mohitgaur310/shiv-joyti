@@ -77,21 +77,42 @@ const footerText = {
 export default function Footer({ language, setLanguage }) {
   
   return (
-    <Box sx={{ background: '#4a4a4a', color: '#fff', pt: { xs: 6, md: 8 }, pb: 3, mt: 8 }}>
-      <Container maxWidth="lg" sx={{ px: { xs: 2, sm: 3 } }}>
+    <Box sx={{ 
+      background: '#4a4a4a', 
+      color: '#fff', 
+      pt: { xs: 4, sm: 5, md: 6, lg: 7 }, 
+      pb: { xs: 2, sm: 3 }, 
+      mt: { xs: 4, sm: 6, md: 7, lg: 8 } 
+    }}>
+      <Container maxWidth="lg" sx={{ px: { xs: 2, sm: 3, md: 4 } }}>
         {/* Top Links Section */}
-        <Grid container spacing={{ xs: 3, md: 4 }} justifyContent="center" sx={{ mb: { xs: 4, md: 6 } }}>
+        <Grid 
+          container 
+          spacing={{ xs: 2, sm: 3, md: 4 }} 
+          justifyContent="center" 
+          sx={{ mb: { xs: 3, sm: 4, md: 5, lg: 6 } }}
+        >
           {footerLinks[language].map((section, idx) => (
-            <Grid item xs={12} sm={6} md={2.4} key={idx} sx={{ textAlign: { xs: 'center', md: 'left' } }}>
+            <Grid 
+              item 
+              xs={12} 
+              sm={6} 
+              md={2.4} 
+              key={idx} 
+              sx={{ 
+                textAlign: { xs: 'center', md: 'left' },
+                mb: { xs: 2, sm: 0 }
+              }}
+            >
               <Typography 
                 variant="subtitle1" 
                 sx={{ 
                   fontWeight: 'bold', 
-                  mb: { xs: 1.5, md: 2 }, 
+                  mb: { xs: 1, sm: 1.5, md: 2 }, 
                   borderBottom: '2px solid #fff', 
                   width: 'fit-content', 
                   mx: { xs: 'auto', md: 0 },
-                  fontSize: { xs: '0.875rem', md: '1rem' },
+                  fontSize: { xs: '0.75rem', sm: '0.875rem', md: '1rem' },
                   pb: 0.5,
                 }}
               >
@@ -102,11 +123,15 @@ export default function Footer({ language, setLanguage }) {
                   key={i} 
                   variant="body2" 
                   sx={{ 
-                    mb: { xs: 0.5, md: 0.75 }, 
+                    mb: { xs: 0.25, sm: 0.5, md: 0.75 }, 
                     cursor: 'pointer', 
-                    '&:hover': { textDecoration: 'underline' },
-                    fontSize: { xs: '0.75rem', md: '0.875rem' },
+                    '&:hover': { 
+                      textDecoration: 'underline',
+                      color: '#a4e05f'
+                    },
+                    fontSize: { xs: '0.625rem', sm: '0.75rem', md: '0.875rem' },
                     lineHeight: 1.4,
+                    transition: 'color 0.3s ease',
                   }}
                 >
                   {link}
@@ -116,17 +141,36 @@ export default function Footer({ language, setLanguage }) {
           ))}
         </Grid>
         
-        <Divider sx={{ my: { xs: 3, md: 4 }, borderColor: '#888' }} />
+        <Divider sx={{ 
+          my: { xs: 2, sm: 3, md: 4, lg: 5 }, 
+          borderColor: '#888',
+          opacity: 0.6,
+        }} />
         
         {/* Bottom Section: Contact, Newsletter */}
-        <Grid container spacing={{ xs: 3, md: 4 }} alignItems="flex-start" justifyContent="space-between">
-          <Grid item xs={12} md={6} sx={{ textAlign: { xs: 'center', md: 'left' }, mb: { xs: 3, md: 0 } }}>
+        <Grid 
+          container 
+          spacing={{ xs: 2, sm: 3, md: 4 }} 
+          alignItems="flex-start" 
+          justifyContent="space-between"
+          sx={{ mb: { xs: 2, sm: 3 } }}
+        >
+          <Grid 
+            item 
+            xs={12} 
+            md={6} 
+            sx={{ 
+              textAlign: { xs: 'center', md: 'left' }, 
+              mb: { xs: 3, md: 0 },
+              order: { xs: 2, md: 1 }
+            }}
+          >
             <Typography 
               variant="h6" 
               sx={{ 
                 fontWeight: 'bold', 
-                mb: { xs: 1, md: 1.5 },
-                fontSize: { xs: '1rem', md: '1.25rem' },
+                mb: { xs: 1, sm: 1.5 },
+                fontSize: { xs: '0.875rem', sm: '1rem', md: '1.125rem', lg: '1.25rem' },
               }}
             >
               {footerText[language].foundation}
@@ -134,9 +178,11 @@ export default function Footer({ language, setLanguage }) {
             <Typography 
               variant="body2" 
               sx={{ 
-                mb: { xs: 1, md: 1.5 },
-                fontSize: { xs: '0.75rem', md: '0.875rem' },
+                mb: { xs: 0.75, sm: 1, md: 1.5 },
+                fontSize: { xs: '0.625rem', sm: '0.75rem', md: '0.875rem' },
                 lineHeight: 1.5,
+                wordWrap: 'break-word',
+                overflowWrap: 'break-word',
               }}
             >
               {footerText[language].address}
@@ -145,50 +191,72 @@ export default function Footer({ language, setLanguage }) {
               variant="body2" 
               sx={{ 
                 mt: 1,
-                fontSize: { xs: '0.75rem', md: '0.875rem' },
+                fontSize: { xs: '0.625rem', sm: '0.75rem', md: '0.875rem' },
                 lineHeight: 1.5,
+                wordWrap: 'break-word',
+                overflowWrap: 'break-word',
               }}
             >
               {footerText[language].contact}
             </Typography>
           </Grid>
           
-          <Grid item xs={12} md={6} sx={{ 
-            display: 'flex', 
-            flexDirection: 'column', 
-            alignItems: { xs: 'center', md: 'flex-end' }, 
-            justifyContent: 'center' 
-          }}>
+          <Grid 
+            item 
+            xs={12} 
+            md={6} 
+            sx={{ 
+              display: 'flex', 
+              flexDirection: 'column', 
+              alignItems: { xs: 'center', md: 'flex-end' }, 
+              justifyContent: 'center',
+              order: { xs: 1, md: 2 }
+            }}
+          >
             <Typography 
               variant="body2" 
               sx={{ 
-                mb: { xs: 1.5, md: 2 }, 
+                mb: { xs: 1.5, sm: 2 }, 
                 textAlign: { xs: 'center', md: 'right' },
-                fontSize: { xs: '0.875rem', md: '1rem' },
+                fontSize: { xs: '0.75rem', sm: '0.875rem', md: '1rem' },
                 fontWeight: 500,
               }}
             >
               {footerText[language].subscribe}
             </Typography>
-            <Box component="form" sx={{ 
-              display: 'flex', 
-              gap: { xs: 1, md: 2 }, 
-              flexWrap: 'wrap', 
-              justifyContent: { xs: 'center', md: 'flex-end' }, 
-              width: '100%', 
-              maxWidth: 420, 
-              mb: { xs: 2, md: 3 } 
-            }}>
+            <Box 
+              component="form" 
+              sx={{ 
+                display: 'flex', 
+                gap: { xs: 1, sm: 1.5, md: 2 }, 
+                flexWrap: 'wrap', 
+                justifyContent: { xs: 'center', md: 'flex-end' }, 
+                width: '100%', 
+                maxWidth: { xs: '100%', sm: 420 }, 
+                mb: { xs: 2, sm: 3 } 
+              }}
+            >
               <TextField 
                 variant="standard" 
                 placeholder={footerText[language].name} 
                 aria-label="Name" 
                 sx={{ 
                   flex: 1, 
-                  minWidth: { xs: 100, sm: 120 }, 
-                  input: { color: '#fff', fontSize: { xs: '0.75rem', md: '0.875rem' } } 
+                  minWidth: { xs: 80, sm: 100, md: 120 }, 
+                  input: { 
+                    color: '#fff', 
+                    fontSize: { xs: '0.625rem', sm: '0.75rem', md: '0.875rem' },
+                    minHeight: '44px',
+                  } 
                 }} 
-                InputProps={{ disableUnderline: true }}
+                InputProps={{ 
+                  disableUnderline: true,
+                  sx: {
+                    '&:before': { borderBottom: '1px solid #666' },
+                    '&:hover:before': { borderBottom: '1px solid #a4e05f' },
+                    '&:after': { borderBottom: '1px solid #a4e05f' },
+                  }
+                }}
               />
               <TextField 
                 variant="standard" 
@@ -196,10 +264,21 @@ export default function Footer({ language, setLanguage }) {
                 aria-label="Email" 
                 sx={{ 
                   flex: 2, 
-                  minWidth: { xs: 150, sm: 180 }, 
-                  input: { color: '#fff', fontSize: { xs: '0.75rem', md: '0.875rem' } } 
+                  minWidth: { xs: 120, sm: 150, md: 180 }, 
+                  input: { 
+                    color: '#fff', 
+                    fontSize: { xs: '0.625rem', sm: '0.75rem', md: '0.875rem' },
+                    minHeight: '44px',
+                  } 
                 }} 
-                InputProps={{ disableUnderline: true }}
+                InputProps={{ 
+                  disableUnderline: true,
+                  sx: {
+                    '&:before': { borderBottom: '1px solid #666' },
+                    '&:hover:before': { borderBottom: '1px solid #a4e05f' },
+                    '&:after': { borderBottom: '1px solid #a4e05f' },
+                  }
+                }}
               />
               <Button 
                 variant="contained" 
@@ -207,11 +286,17 @@ export default function Footer({ language, setLanguage }) {
                   background: '#a4e05f', 
                   color: '#222', 
                   fontWeight: 'bold', 
-                  px: { xs: 2, md: 4 }, 
+                  px: { xs: 1.5, sm: 2, md: 4 }, 
                   borderRadius: 1, 
-                  height: { xs: 36, md: 40 }, 
-                  fontSize: { xs: '0.75rem', md: '0.875rem' },
-                  '&:hover': { background: '#8fd44a' } 
+                  height: { xs: 36, sm: 38, md: 40 }, 
+                  fontSize: { xs: '0.625rem', sm: '0.75rem', md: '0.875rem' },
+                  minHeight: '44px',
+                  minWidth: '44px',
+                  '&:hover': { 
+                    background: '#8fd44a',
+                    transform: 'translateY(-1px)',
+                  },
+                  transition: 'all 0.3s ease',
                 }}
               >
                 {footerText[language].subscribeBtn}
@@ -224,8 +309,8 @@ export default function Footer({ language, setLanguage }) {
         <Box sx={{ 
           display: 'flex', 
           justifyContent: 'center', 
-          gap: { xs: 1.5, md: 2 }, 
-          mt: { xs: 3, md: 4 },
+          gap: { xs: 1, sm: 1.5, md: 2 }, 
+          mt: { xs: 2, sm: 3, md: 4, lg: 5 },
           flexWrap: 'wrap',
         }}>
           <IconButton 
@@ -233,60 +318,90 @@ export default function Footer({ language, setLanguage }) {
             sx={{ 
               background: '#222', 
               color: '#fff', 
-              width: { xs: 36, md: 40 },
-              height: { xs: 36, md: 40 },
-              '&:hover': { background: '#555' } 
+              width: { xs: 32, sm: 36, md: 40 },
+              height: { xs: 32, sm: 36, md: 40 },
+              minHeight: '44px',
+              minWidth: '44px',
+              '&:hover': { 
+                background: '#555',
+                transform: 'translateY(-2px)',
+              },
+              transition: 'all 0.3s ease',
             }}
           >
-            <FacebookIcon sx={{ fontSize: { xs: '1.25rem', md: '1.5rem' } }} />
+            <FacebookIcon sx={{ fontSize: { xs: '1rem', sm: '1.25rem', md: '1.5rem' } }} />
           </IconButton>
           <IconButton 
             aria-label="Twitter" 
             sx={{ 
               background: '#222', 
               color: '#fff', 
-              width: { xs: 36, md: 40 },
-              height: { xs: 36, md: 40 },
-              '&:hover': { background: '#555' } 
+              width: { xs: 32, sm: 36, md: 40 },
+              height: { xs: 32, sm: 36, md: 40 },
+              minHeight: '44px',
+              minWidth: '44px',
+              '&:hover': { 
+                background: '#555',
+                transform: 'translateY(-2px)',
+              },
+              transition: 'all 0.3s ease',
             }}
           >
-            <TwitterIcon sx={{ fontSize: { xs: '1.25rem', md: '1.5rem' } }} />
+            <TwitterIcon sx={{ fontSize: { xs: '1rem', sm: '1.25rem', md: '1.5rem' } }} />
           </IconButton>
           <IconButton 
             aria-label="YouTube" 
             sx={{ 
               background: '#222', 
               color: '#fff', 
-              width: { xs: 36, md: 40 },
-              height: { xs: 36, md: 40 },
-              '&:hover': { background: '#555' } 
+              width: { xs: 32, sm: 36, md: 40 },
+              height: { xs: 32, sm: 36, md: 40 },
+              minHeight: '44px',
+              minWidth: '44px',
+              '&:hover': { 
+                background: '#555',
+                transform: 'translateY(-2px)',
+              },
+              transition: 'all 0.3s ease',
             }}
           >
-            <YouTubeIcon sx={{ fontSize: { xs: '1.25rem', md: '1.5rem' } }} />
+            <YouTubeIcon sx={{ fontSize: { xs: '1rem', sm: '1.25rem', md: '1.5rem' } }} />
           </IconButton>
           <IconButton 
             aria-label="Instagram" 
             sx={{ 
               background: '#222', 
               color: '#fff', 
-              width: { xs: 36, md: 40 },
-              height: { xs: 36, md: 40 },
-              '&:hover': { background: '#555' } 
+              width: { xs: 32, sm: 36, md: 40 },
+              height: { xs: 32, sm: 36, md: 40 },
+              minHeight: '44px',
+              minWidth: '44px',
+              '&:hover': { 
+                background: '#555',
+                transform: 'translateY(-2px)',
+              },
+              transition: 'all 0.3s ease',
             }}
           >
-            <InstagramIcon sx={{ fontSize: { xs: '1.25rem', md: '1.5rem' } }} />
+            <InstagramIcon sx={{ fontSize: { xs: '1rem', sm: '1.25rem', md: '1.5rem' } }} />
           </IconButton>
           <IconButton 
             aria-label="LinkedIn" 
             sx={{ 
               background: '#222', 
               color: '#fff', 
-              width: { xs: 36, md: 40 },
-              height: { xs: 36, md: 40 },
-              '&:hover': { background: '#555' } 
+              width: { xs: 32, sm: 36, md: 40 },
+              height: { xs: 32, sm: 36, md: 40 },
+              minHeight: '44px',
+              minWidth: '44px',
+              '&:hover': { 
+                background: '#555',
+                transform: 'translateY(-2px)',
+              },
+              transition: 'all 0.3s ease',
             }}
           >
-            <LinkedInIcon sx={{ fontSize: { xs: '1.25rem', md: '1.5rem' } }} />
+            <LinkedInIcon sx={{ fontSize: { xs: '1rem', sm: '1.25rem', md: '1.5rem' } }} />
           </IconButton>
         </Box>
       </Container>

@@ -78,29 +78,88 @@ const CofounderCard = ({ founder }) => (
       height="280"
       image={process.env.PUBLIC_URL + founder.img}
       alt={founder.name}
-      sx={{ objectFit: 'cover' }}
+      sx={{ 
+        objectFit: 'cover',
+        height: { xs: 200, sm: 240, md: 260, lg: 280 }
+      }}
     />
-    <CardContent sx={{ flexGrow: 1, p: { xs: 2, md: 3 } }}>
-      <Typography variant="body1" sx={{ color: '#72be44', fontWeight: 'bold', mb: 1 }}>
-        {founder.title}
-      </Typography>
-      <Typography variant="h6" component="div" sx={{ fontWeight: 'bold', my: 0.5, fontSize: { xs: '1.1rem', md: '1.25rem' } }}>
-        {founder.name}
-      </Typography>
-      {founder.bio && (
-        <Typography variant="body2" color="text.secondary" sx={{ mt: 1, lineHeight: 1.6 }}>
-          {founder.bio}
+    <CardContent sx={{ 
+      flexGrow: 1, 
+      p: { xs: 1.5, sm: 2, md: 2.5, lg: 3 },
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'space-between',
+    }}>
+      <Box>
+        <Typography 
+          variant="body1" 
+          sx={{ 
+            color: '#72be44', 
+            fontWeight: 'bold', 
+            mb: 1,
+            fontSize: { xs: '0.875rem', sm: '1rem' }
+          }}
+        >
+          {founder.title}
         </Typography>
-      )}
+        <Typography 
+          variant="h6" 
+          component="div" 
+          sx={{ 
+            fontWeight: 'bold', 
+            my: 0.5, 
+            fontSize: { xs: '1rem', sm: '1.1rem', md: '1.25rem' },
+            lineHeight: 1.2,
+          }}
+        >
+          {founder.name}
+        </Typography>
+        {founder.bio && (
+          <Typography 
+            variant="body2" 
+            color="text.secondary" 
+            sx={{ 
+              mt: 1, 
+              lineHeight: 1.6,
+              fontSize: { xs: '0.75rem', sm: '0.875rem' },
+              wordWrap: 'break-word',
+              overflowWrap: 'break-word',
+            }}
+          >
+            {founder.bio}
+          </Typography>
+        )}
+      </Box>
+      <Box sx={{ 
+        p: 1, 
+        px: 2, 
+        pb: 2,
+        mt: 2,
+        display: 'flex',
+        gap: 1,
+      }}>
+        <IconButton 
+          aria-label="linkedin" 
+          sx={{ 
+            '&:hover': { color: '#0077b5' },
+            minHeight: '44px',
+            minWidth: '44px',
+          }}
+        >
+          <LinkedInIcon sx={{ fontSize: { xs: '1.25rem', sm: '1.5rem' } }} />
+        </IconButton>
+        <IconButton 
+          aria-label="twitter" 
+          sx={{ 
+            '&:hover': { color: '#1DA1F2' },
+            minHeight: '44px',
+            minWidth: '44px',
+          }}
+        >
+          <TwitterIcon sx={{ fontSize: { xs: '1.25rem', sm: '1.5rem' } }} />
+        </IconButton>
+      </Box>
     </CardContent>
-    <Box sx={{ p: 1, px: 2, pb: 2 }}>
-      <IconButton aria-label="linkedin" sx={{ '&:hover': { color: '#0077b5' } }}>
-        <LinkedInIcon />
-      </IconButton>
-      <IconButton aria-label="twitter" sx={{ '&:hover': { color: '#1DA1F2' } }}>
-        <TwitterIcon />
-      </IconButton>
-    </Box>
   </Card>
 );
 
@@ -110,41 +169,47 @@ export default function AboutSection({ language }) {
   // What We Do items
   const whatWeDoItems = [
     {
-      icon: <SchoolIcon sx={{ fontSize: { xs: 36, md: 48 }, color: '#72be44' }} />,
+      icon: <SchoolIcon sx={{ fontSize: { xs: 28, sm: 36, md: 48 }, color: '#72be44' }} />,
       title: language === 'en' ? 'Access to Quality Education' : 'गुणवत्तापूर्ण शिक्षा तक पहुँच',
       desc: language === 'en' ? 'Empowering children with learning opportunities.' : 'बच्चों को सीखने के अवसर प्रदान करना।',
     },
     {
-      icon: <HandshakeIcon sx={{ fontSize: { xs: 36, md: 48 }, color: '#72be44' }} />,
+      icon: <HandshakeIcon sx={{ fontSize: { xs: 28, sm: 36, md: 48 }, color: '#72be44' }} />,
       title: language === 'en' ? 'Bridge Course for Non-School Going Children' : 'गैर-स्कूल जाने वाले बच्चों के लिए ब्रिज कोर्स',
       desc: language === 'en' ? 'Helping out-of-school children catch up.' : 'स्कूल से बाहर बच्चों की मदद करना।',
     },
     {
-      icon: <Diversity3Icon sx={{ fontSize: { xs: 36, md: 48 }, color: '#72be44' }} />,
+      icon: <Diversity3Icon sx={{ fontSize: { xs: 28, sm: 36, md: 48 }, color: '#72be44' }} />,
       title: language === 'en' ? 'Remedial Education Support' : 'सहायक शिक्षा समर्थन',
       desc: language === 'en' ? 'Personalized help for struggling students.' : 'संघर्षरत छात्रों के लिए व्यक्तिगत सहायता।',
     },
     {
-      icon: <WorkspacePremiumIcon sx={{ fontSize: { xs: 36, md: 48 }, color: '#72be44' }} />,
+      icon: <WorkspacePremiumIcon sx={{ fontSize: { xs: 28, sm: 36, md: 48 }, color: '#72be44' }} />,
       title: language === 'en' ? 'Scholarship Support for Continued Education' : 'निरंतर शिक्षा के लिए छात्रवृत्ति समर्थन',
       desc: language === 'en' ? 'Enabling bright minds to pursue their dreams.' : 'प्रतिभाशाली छात्रों को उनके सपनों को पूरा करने में मदद करना।',
     },
   ];
 
   return (
-    <Box id="about" sx={{ py: { xs: 6, md: 8 }, backgroundColor: "#fff" }}>
-      <Container maxWidth="lg" sx={{ px: { xs: 2, sm: 3 } }}>
+    <Box id="about" sx={{ 
+      py: { xs: 4, sm: 5, md: 6, lg: 7 }, 
+      backgroundColor: "#fff",
+      overflowX: 'hidden',
+    }}>
+      <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4 } }}>
         {/* What We Do Section */}
-        <Box sx={{ textAlign: 'center', mb: { xs: 6, md: 8 } }}>
+        <Box sx={{ textAlign: 'center', mb: { xs: 4, sm: 5, md: 6, lg: 7 } }}>
           <Typography 
             variant="h3" 
             component="h2" 
             sx={{ 
               fontWeight: 'bold', 
               color: '#222', 
-              mb: { xs: 2, md: 3 },
-              fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem' },
+              mb: { xs: 2, sm: 3 },
+              fontSize: { xs: '1.75rem', sm: '2rem', md: '2.25rem', lg: '2.5rem' },
               lineHeight: { xs: 1.2, md: 1.1 },
+              wordWrap: 'break-word',
+              overflowWrap: 'break-word',
             }}
           >
             {language === 'en' ? 'What We Do' : 'हम क्या करते हैं'}
@@ -153,27 +218,30 @@ export default function AboutSection({ language }) {
             variant="h6" 
             sx={{ 
               color: '#555', 
-              maxWidth: 800, 
+              maxWidth: { xs: '100%', sm: 800 }, 
               mx: 'auto', 
               fontWeight: 400, 
-              mb: { xs: 4, md: 6 },
-              fontSize: { xs: '1rem', md: '1.25rem' },
+              mb: { xs: 3, sm: 4, md: 5, lg: 6 },
+              fontSize: { xs: '0.875rem', sm: '1rem', md: '1.125rem', lg: '1.25rem' },
               lineHeight: 1.6,
-              px: { xs: 1, md: 0 },
+              px: { xs: 1, sm: 2, md: 0 },
+              wordWrap: 'break-word',
+              overflowWrap: 'break-word',
             }}
           >
             {data.aboutText}
           </Typography>
           
-          {/* Creative horizontal row - Responsive */}
+          {/* Creative horizontal row - All items in single row on desktop */}
           <Box sx={{ 
             display: 'flex', 
             flexDirection: { xs: 'column', lg: 'row' }, 
             alignItems: 'center', 
             justifyContent: 'center', 
-            gap: { xs: 4, lg: 2 }, 
-            mb: { xs: 6, md: 8 },
-            flexWrap: 'wrap',
+            gap: { xs: 3, sm: 4, lg: 1.5 }, 
+            mb: { xs: 4, sm: 5, md: 6, lg: 7 },
+            flexWrap: 'nowrap',
+            width: '100%',
           }}>
             {whatWeDoItems.map((item, idx) => (
               <React.Fragment key={idx}>
@@ -181,20 +249,21 @@ export default function AboutSection({ language }) {
                   display: 'flex', 
                   flexDirection: 'column', 
                   alignItems: 'center', 
-                  minWidth: { xs: '100%', sm: 200, lg: 180 }, 
-                  maxWidth: { xs: '100%', sm: 250, lg: 220 },
-                  flex: { xs: '1 1 100%', lg: '0 0 auto' },
+                  flex: { xs: '1 1 100%', lg: '1 1 0' },
+                  minWidth: { xs: '100%', lg: 'auto' },
+                  maxWidth: { xs: '100%', lg: 'none' },
+                  px: { xs: 1, sm: 2, lg: 1 },
                 }}>
                   <Box sx={{
-                    width: { xs: 70, md: 90 },
-                    height: { xs: 70, md: 90 },
+                    width: { xs: 60, sm: 70, md: 80, lg: 70 },
+                    height: { xs: 60, sm: 70, md: 80, lg: 70 },
                     borderRadius: '50%',
                     border: '2.5px dashed #72be44',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     background: '#eaf7e3',
-                    mb: 2,
+                    mb: { xs: 1.5, sm: 2 },
                   }}>
                     {item.icon}
                   </Box>
@@ -205,8 +274,10 @@ export default function AboutSection({ language }) {
                       fontStyle: 'italic', 
                       textAlign: 'center', 
                       mb: 1,
-                      fontSize: { xs: '1rem', md: '1.125rem' },
+                      fontSize: { xs: '0.875rem', sm: '1rem', md: '1rem', lg: '0.875rem' },
                       lineHeight: 1.3,
+                      wordWrap: 'break-word',
+                      overflowWrap: 'break-word',
                     }}
                   >
                     {item.title}
@@ -216,9 +287,11 @@ export default function AboutSection({ language }) {
                     sx={{ 
                       color: '#555', 
                       textAlign: 'center',
-                      fontSize: { xs: '0.875rem', md: '1rem' },
+                      fontSize: { xs: '0.75rem', sm: '0.875rem', md: '0.875rem', lg: '0.75rem' },
                       lineHeight: 1.4,
-                      maxWidth: { xs: '100%', sm: 200 },
+                      maxWidth: { xs: '100%', sm: 200, lg: 'none' },
+                      wordWrap: 'break-word',
+                      overflowWrap: 'break-word',
                     }}
                   >
                     {item.desc}
@@ -227,11 +300,12 @@ export default function AboutSection({ language }) {
                 {idx < whatWeDoItems.length - 1 && (
                   <ArrowForwardIosIcon sx={{ 
                     color: '#b5d7a6', 
-                    fontSize: { xs: 24, md: 32 }, 
-                    mx: { xs: 0, lg: 2 }, 
-                    my: { xs: 2, lg: 0 }, 
+                    fontSize: { xs: 20, sm: 24, md: 28, lg: 24 }, 
+                    mx: { xs: 0, lg: 1 }, 
+                    my: { xs: 1, sm: 2, lg: 0 }, 
                     alignSelf: 'center',
                     transform: { xs: 'rotate(90deg)', lg: 'none' },
+                    flexShrink: 0,
                   }} />
                 )}
               </React.Fragment>
@@ -240,32 +314,39 @@ export default function AboutSection({ language }) {
         </Box>
         
         {/* Minds Behind the Mission Section */}
-        <Box sx={{ textAlign: 'center', mb: { xs: 6, md: 8 } }}>
+        <Box sx={{ textAlign: 'center', mb: { xs: 4, sm: 5, md: 6, lg: 7 } }}>
           <Typography 
             variant="h3" 
             component="h2" 
             sx={{ 
               fontWeight: 'bold', 
               color: '#222',
-              fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem' },
+              fontSize: { xs: '1.75rem', sm: '2rem', md: '2.25rem', lg: '2.5rem' },
               lineHeight: { xs: 1.2, md: 1.1 },
+              wordWrap: 'break-word',
+              overflowWrap: 'break-word',
             }}
           >
             {data.heading}
           </Typography>
         </Box>
         
-        {/* Founders - Original horizontal layout for desktop, responsive for mobile */}
+        {/* Founders - Responsive grid layout */}
         <Box sx={{ 
-          display: { xs: 'block', lg: 'flex' }, 
-          justifyContent: 'space-between', 
-          gap: { xs: 3, lg: 3 },
-          flexDirection: { xs: 'column', lg: 'row' }
+          display: 'grid',
+          gridTemplateColumns: { 
+            xs: '1fr', 
+            sm: 'repeat(2, 1fr)', 
+            lg: 'repeat(3, 1fr)' 
+          },
+          gap: { xs: 3, sm: 4, lg: 3 },
+          maxWidth: '100%',
         }}>
           {data.cofounders.map((founder, i) => (
             <Box key={i} sx={{ 
-              flex: { xs: '1 1 100%', lg: '0 0 30%' },
-              mb: { xs: 3, lg: 0 }
+              width: '100%',
+              display: 'flex',
+              flexDirection: 'column',
             }}>
               <CofounderCard founder={founder} />
             </Box>

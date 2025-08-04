@@ -54,27 +54,38 @@ export default function HomePage({ language }) {
 
   return (
     <>
-      <Box sx={{ pt: { xs: 7, md: 8 } }}>
+      <Box sx={{ pt: { xs: 7, sm: 9, md: 10 } }}>
         <Swiper
           modules={[Autoplay]}
           autoplay={{ delay: 3000, disableOnInteraction: false }}
           loop={true}
+          style={{ width: '100%' }}
         >
           {images.map((src, i) => (
             <SwiperSlide key={i}>
               <Box
                 sx={{
                   position: "relative",
-                  height: { xs: 450, sm: 500, md: 550, lg: 600 },
+                  height: { 
+                    xs: 400, 
+                    sm: 450, 
+                    md: 500, 
+                    lg: 520, 
+                    xl: 550 
+                  },
                   overflow: "hidden",
+                  width: '100%',
                 }}
               >
                 <img
                   src={process.env.PUBLIC_URL + src}
                   alt={`slide-${i}`}
-                  width="100%"
-                  height="100%"
-                  style={{ objectFit: "cover", filter: "brightness(0.5)" }}
+                  style={{ 
+                    width: '100%',
+                    height: '100%',
+                    objectFit: "cover", 
+                    filter: "brightness(0.5)" 
+                  }}
                 />
                 <Box
                   sx={{
@@ -88,23 +99,37 @@ export default function HomePage({ language }) {
                     justifyContent: "center",
                     alignItems: "center",
                     color: "white",
-                    px: { xs: 3, sm: 4, md: 5 },
+                    px: { xs: 2, sm: 3, md: 4, lg: 5 },
                     textAlign: "center",
                     opacity: 0.95,
-                    pt: { xs: 6, md: 0 }, // Increased top padding for mobile to avoid header overlap
-                    pb: { xs: 4, md: 0 }, // Add bottom padding for mobile
+                    pt: { xs: 4, sm: 5, md: 0 },
+                    pb: { xs: 4, sm: 5, md: 0 },
                   }}
                 >
-                  <Container maxWidth="lg">
+                  <Container 
+                    maxWidth="lg" 
+                    sx={{ 
+                      px: { xs: 1, sm: 2, md: 3 },
+                      maxWidth: { xs: '100%', sm: '90%', md: '85%', lg: '80%' }
+                    }}
+                  >
                     <Typography 
-                      variant="h2" 
+                      variant="h1" 
                       sx={{ 
                         fontWeight: "bold",
-                        mb: { xs: 3, md: 4 },
-                        fontSize: { xs: "2.25rem", sm: "2.75rem", md: "3.25rem", lg: "3.75rem" },
-                        lineHeight: { xs: 1.1, md: 1.1 },
+                        mb: { xs: 2, sm: 3, md: 4 },
+                        fontSize: { 
+                          xs: "1.75rem", 
+                          sm: "2.25rem", 
+                          md: "2.75rem", 
+                          lg: "3rem", 
+                          xl: "3.25rem" 
+                        },
+                        lineHeight: { xs: 1.1, sm: 1.2, md: 1.1 },
                         textShadow: "3px 3px 6px rgba(0,0,0,0.7)",
                         letterSpacing: { xs: "-0.02em", md: "-0.01em" },
+                        wordWrap: 'break-word',
+                        overflowWrap: 'break-word',
                       }}
                     >
                       {content[language].title}
@@ -112,14 +137,21 @@ export default function HomePage({ language }) {
                     <Typography 
                       variant="h6" 
                       sx={{ 
-                        mb: { xs: 4, md: 5 },
-                        fontSize: { xs: "1.125rem", sm: "1.25rem", md: "1.375rem" },
-                        lineHeight: { xs: 1.5, md: 1.6 },
-                        maxWidth: { xs: "100%", md: "85%" },
+                        mb: { xs: 3, sm: 4, md: 5 },
+                        fontSize: { 
+                          xs: "0.875rem", 
+                          sm: "1rem", 
+                          md: "1.125rem", 
+                          lg: "1.25rem" 
+                        },
+                        lineHeight: { xs: 1.5, sm: 1.6, md: 1.6 },
+                        maxWidth: { xs: "100%", sm: "95%", md: "90%", lg: "85%" },
                         mx: "auto",
                         textShadow: "2px 2px 4px rgba(0,0,0,0.7)",
                         opacity: 0.98,
-                        fontWeight: { xs: 400, md: 500 },
+                        fontWeight: { xs: 400, sm: 400, md: 500 },
+                        wordWrap: 'break-word',
+                        overflowWrap: 'break-word',
                       }}
                     >
                       {content[language].paragraph}
@@ -131,13 +163,19 @@ export default function HomePage({ language }) {
                       sx={{
                         backgroundColor: "white",
                         color: "#666",
-                        px: { xs: 4, md: 5 },
-                        py: { xs: 2, md: 2.5 },
-                        fontSize: { xs: "1.125rem", md: "1.25rem" },
+                        px: { xs: 3, sm: 4, md: 5 },
+                        py: { xs: 1.5, sm: 2, md: 2.5 },
+                        fontSize: { 
+                          xs: "0.875rem", 
+                          sm: "1rem", 
+                          md: "1.125rem", 
+                          lg: "1.25rem" 
+                        },
                         fontWeight: "bold",
                         borderRadius: 3,
                         boxShadow: "0 6px 20px rgba(0,0,0,0.4)",
-                        minHeight: { xs: "48px", md: "56px" },
+                        minHeight: { xs: "44px", sm: "48px", md: "52px", lg: "56px" },
+                        minWidth: { xs: "120px", sm: "140px", md: "160px" },
                         "&:hover": {
                           background: "radial-gradient(at bottom center, #72be44 0, #7dc657 100%)",
                           color: "white",
@@ -145,6 +183,7 @@ export default function HomePage({ language }) {
                           boxShadow: "0 8px 25px rgba(0,0,0,0.5)",
                         },
                         transition: "all 0.3s ease",
+                        textTransform: 'none',
                       }}
                     >
                       {content[language].button}
